@@ -11,8 +11,6 @@
 #include "../stage.h"
 #include "../main.h"
 
-#include "../stage/week0.h"
-
 //Disrupt character structure
 enum
 {
@@ -52,9 +50,6 @@ typedef struct
 	
 	Gfx_Tex tex;
 	u8 frame, tex_id;
-	
-	//Pico test
-	u16 *pico_p;
 } Char_Disrupt;
 
 //Disrupt character definitions
@@ -128,25 +123,6 @@ void Char_Disrupt_Tick(Character *character)
 	 
 	if (stage.stage_id == StageId_1_2 && stage.timercount >= 4565 && stage.timercount <= 11555)
     Character_Draw(character, &this->tex, &char_disrupt_frame[this->frame]);
-
-	//Initialize Pico test
-	if (stage.stage_id == StageId_1_2 && stage.back != NULL && this->pico_p == NULL)
-		this->pico_p = ((Back_Week0*)stage.back)->pico_chart;
-	
-	if (this->pico_p != NULL)
-	{
-		if (stage.note_scroll >= 0)
-		{
-			//Scroll through Pico chart
-			u16 substep = stage.note_scroll >> FIXED_SHIFT;
-			while (substep >= ((*this->pico_p) & 0x7FFF))
-			{
-				//Play animation and bump speakers
-				character->set_anim(character, ((*this->pico_p) & 0x8000) ? CharAnim_Right : CharAnim_Left);
-				this->pico_p++;
-			}
-		}
-	}
 	
 	//Stage specific animations
 	if (stage.note_scroll >= 0)
@@ -237,12 +213,6 @@ Character *Char_Disrupt_New(fixed_t x, fixed_t y)
 	
 	//Initialize render state
 	this->tex_id = this->frame = 0xFF;
-	
-		//Initialize Pico test
-	if (stage.stage_id == StageId_1_2 && stage.back != NULL)
-		this->pico_p = ((Back_Week0*)stage.back)->pico_chart;
-	else
-		this->pico_p = NULL;
 	
 	return (Character*)this;
 }

@@ -12,21 +12,6 @@
 #include "../mutil.h"
 #include "../timer.h"
 
-static void Back_Week0_LoadPicoChart(Back_Week0 *this)
-{
-	//Load Pico chart
-	this->pico_chart = (u16*)IO_Read("\\WEEK0\\0.1P.CHT;1");
-}
-
-void Back_Week0_DrawFG(StageBack *back)
-{
-	Back_Week0 *this = (Back_Week0*)back;
-	
-	//Load Pico chart
-	if (stage.stage_id == StageId_1_2 && this->pico_chart == NULL)
-		Back_Week0_LoadPicoChart(this);
-}
-
 //Week 0 background functions
 void Back_Week0_DrawBG(StageBack *back)
 {
@@ -160,7 +145,7 @@ StageBack *Back_Week0_New(void)
 		return NULL;
 	
 	//Set background functions
-	this->back.draw_fg = Back_Week0_DrawFG;
+	this->back.draw_fg = NULL;
 	this->back.draw_md = NULL;
 	this->back.draw_bg = Back_Week0_DrawBG3;
 	this->back.free = Back_Week0_Free;
@@ -171,12 +156,6 @@ StageBack *Back_Week0_New(void)
 	Gfx_LoadTex(&this->tex_back1, Archive_Find(arc_back, "back1.tim"), 0);
 	Gfx_LoadTex(&this->tex_back2, Archive_Find(arc_back, "back2.tim"), 0);
 	Mem_Free(arc_back);
-	
-	//Load Pico chart
-	if (stage.stage_id == StageId_1_2)
-		Back_Week0_LoadPicoChart(this);
-	else
-		this->pico_chart = NULL;
 	
 	return (StageBack*)this;
 }

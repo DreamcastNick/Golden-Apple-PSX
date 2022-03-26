@@ -489,7 +489,11 @@ static void Stage_ProcessPlayer(PlayerState *this, Pad *pad, boolean playing)
 		if (playing)
 		{
 			u8 i = (this->character == stage.opponent) ? NOTE_FLAG_OPPONENT : 0;
-
+			if (stage.stage_id >= StageId_1_2)
+			{
+				u8 i = (this->character == stage.opponent2) ? NOTE_FLAG_OPPONENT2 : 0;
+			}
+			
 			this->pad_held = this->character->pad_held = pad->held;
 			this->pad_press = pad->press;
 			
@@ -523,6 +527,10 @@ static void Stage_ProcessPlayer(PlayerState *this, Pad *pad, boolean playing)
 		if (playing)
 		{
 			u8 i = (this->character == stage.opponent) ? NOTE_FLAG_OPPONENT : 0;
+			if (stage.stage_id >= StageId_1_2)
+			{
+				u8 i = (this->character == stage.opponent2) ? NOTE_FLAG_OPPONENT2 : 0;
+			}
 			
 			u8 hit[4] = {0, 0, 0, 0};
 			for (Note *note = stage.cur_note;; note++)
@@ -799,6 +807,11 @@ static void Stage_DrawNotes(void)
 		
 		//Get note information
 		u8 i = (note->type & NOTE_FLAG_OPPONENT) != 0;
+		if (stage.stage_id >= StageId_1_2)
+		{
+			u8 i = (note->type & NOTE_FLAG_OPPONENT2) != 0;
+		}
+		
 		PlayerState *this = &stage.player_state[i];
 		
 		fixed_t note_fp = (fixed_t)note->pos << FIXED_SHIFT;
@@ -2151,6 +2164,10 @@ void Stage_NetHit(Packet *packet)
 	
 	u8 opp_flag = (stage.mode == StageMode_Net1) ? NOTE_FLAG_OPPONENT : 0;
 	if ((note->type & NOTE_FLAG_OPPONENT) != opp_flag)
+		return;
+	
+	u8 opp2_flag = (stage.mode == StageMode_Net1) ? NOTE_FLAG_OPPONENT2 : 0;
+	if ((note->type & NOTE_FLAG_OPPONENT2) != opp2_flag)
 		return;
 	
 	//Update game state

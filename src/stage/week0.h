@@ -19,9 +19,6 @@ typedef struct
 	Gfx_Tex tex_back0; //Background
 	Gfx_Tex tex_back1; //Background 2
 	Gfx_Tex tex_back2; //Background 3
-	
-	//Pico chart
-	u16 *pico_chart;
 } Back_Week0;
 
 //Week 0 functions

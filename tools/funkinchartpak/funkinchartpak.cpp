@@ -23,11 +23,12 @@ struct Section
 };
 
 #define NOTE_FLAG_OPPONENT    (1 << 2) //Note is opponent's
-#define NOTE_FLAG_SUSTAIN     (1 << 3) //Note is a sustain note
-#define NOTE_FLAG_SUSTAIN_END (1 << 4) //Is either end of sustain
-#define NOTE_FLAG_ALT_ANIM    (1 << 5) //Note plays alt animation
-#define NOTE_FLAG_MINE        (1 << 6) //Note is a mine
-#define NOTE_FLAG_HIT         (1 << 7) //Note has been hit
+#define NOTE_FLAG_OPPONENT2   (1 << 3) //Note is 2nd opponent's
+#define NOTE_FLAG_SUSTAIN     (1 << 4) //Note is a sustain note
+#define NOTE_FLAG_SUSTAIN_END (1 << 5) //Is either end of sustain
+#define NOTE_FLAG_ALT_ANIM    (1 << 6) //Note plays alt animation
+#define NOTE_FLAG_MINE        (1 << 7) //Note is a mine
+#define NOTE_FLAG_HIT         (1 << 8) //Note has been hit
 
 struct Note
 {
@@ -86,6 +87,7 @@ int main(int argc, char *argv[])
 	for (auto &i : song_info["notes"]) //Iterate through sections
 	{
 		bool is_opponent = i["mustHitSection"] != true; //Note: swapped
+		bool is_opponent2 = i["bambiSection"] != true; //Note: swapped
 		
 		//Read section
 		Section new_section;
@@ -115,17 +117,21 @@ int main(int argc, char *argv[])
 			Note new_note;
 			int sustain = (int)PosRound(j[2], step_crochet) - 1;
 			new_note.pos = (step_base * 12) + PosRound(((double)j[0] - milli_base) * 12.0, step_crochet);
-			new_note.type = (uint8_t)j[1] & (3 | NOTE_FLAG_OPPONENT);
+			new_note.type = (uint8_t)j[1] & (3 | NOTE_FLAG_OPPONENT | NOTE_FLAG_OPPONENT2);
 			if (is_opponent)
 				new_note.type ^= NOTE_FLAG_OPPONENT;
+			if (is_opponent2)
+				new_note.type ^= NOTE_FLAG_OPPONENT2;
 			if (j[3] == true)
 				new_note.type |= NOTE_FLAG_ALT_ANIM;
 			else if ((new_note.type & NOTE_FLAG_OPPONENT) && is_alt)
 				new_note.type |= NOTE_FLAG_ALT_ANIM;
+			if ((new_note.type & NOTE_FLAG_OPPONENT2) && is_alt)
+				new_note.type |= NOTE_FLAG_ALT_ANIM;
 			if (sustain >= 0)
 				new_note.type |= NOTE_FLAG_SUSTAIN_END;
-			if (((uint8_t)j[1]) & 8)
-				new_note.type |= NOTE_FLAG_MINE;
+			if (j[3] == "Bambi Sing")
+				new_note.type |= NOTE_FLAG_OPPONENT2;
 			
 			if (note_fudge.count(*((uint32_t*)&new_note)))
 			{
