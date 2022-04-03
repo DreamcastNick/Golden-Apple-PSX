@@ -176,9 +176,9 @@ Character *Char_Disrupt_New(fixed_t x, fixed_t y)
 	//Set character stage information
 	this->character.health_i = 8;
 	
-	this->character.focus_x = FIXED_DEC(50,1);
-	this->character.focus_y = FIXED_DEC(-25,1);
-	this->character.focus_zoom = FIXED_DEC(1,1);
+	this->character.focus_x = FIXED_DEC(140,1);
+	this->character.focus_y = FIXED_DEC(25,1);
+	this->character.focus_zoom = FIXED_DEC(05,10);
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\MESS.ARC;1");

@@ -21,7 +21,6 @@
 //Stage constants
 #define STAGE_PERFECT //Play all notes perfectly
 
-
 #define INPUT_LEFT  (PAD_LEFT  | PAD_SQUARE)
 #define INPUT_DOWN  (PAD_DOWN  | PAD_CROSS)
 #define INPUT_UP    (PAD_UP    | PAD_TRIANGLE)
@@ -182,8 +181,8 @@ typedef struct
 	u16 combo;
 	
 	boolean refresh_score;
-	s32 score, max_score;
-	char score_text[24];
+	u32 score, max_score;
+	char score_text[36];
 	
 	u16 pad_held, pad_press;
 } PlayerState;
@@ -247,7 +246,7 @@ typedef struct
 	u16 step_base;
 	Section *section_base;
 	
-	s16 song_step;
+	s32 song_step;
 	
 	s32 timercount;
 	
@@ -255,7 +254,7 @@ typedef struct
 	u8 gf2_speed; //Typically 4 steps, changes in Fresh
 	
 	PlayerState player_state[2];
-	s32 max_score;
+	u32 max_score;
 	
 	enum
 	{

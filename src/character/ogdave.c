@@ -131,7 +131,7 @@ void Char_OGDave_Tick(Character *character)
 	if (stage.stage_id == StageId_2_1 && stage.timercount >= 23040)
 	this->character.health_i = 18;
 
-	if (stage.stage_id == StageId_2_1 && stage.timercount >= 28551)
+	if (stage.stage_id == StageId_2_1 && stage.timercount >= 28865)
 	this->character.health_i = 19;
 
 	if (stage.stage_id == StageId_2_1 && stage.timercount >= 34800)
@@ -195,7 +195,7 @@ Character *Char_OGDave_New(fixed_t x, fixed_t y)
 	
 	this->character.focus_x = FIXED_DEC(75,1);
 	this->character.focus_y = FIXED_DEC(180,1);
-	this->character.focus_zoom = FIXED_DEC(1,1);
+	this->character.focus_zoom = FIXED_DEC(07,10);
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\OGDAVE.ARC;1");

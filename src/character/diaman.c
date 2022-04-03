@@ -141,7 +141,7 @@ Character *Char_DiaMan_New(fixed_t x, fixed_t y)
 	
 	this->character.focus_x = FIXED_DEC(75,1);
 	this->character.focus_y = FIXED_DEC(180,1);
-	this->character.focus_zoom = FIXED_DEC(1,1);
+	this->character.focus_zoom = FIXED_DEC(07,10);
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\DIAMAN.ARC;1");

@@ -185,6 +185,20 @@ void Char_BF_Tick(Character *character)
 {
 	Char_BF *this = (Char_BF*)character;
 	
+	if ((stage.stage_id == StageId_1_2) && stage.timercount >= 11210)
+	{
+	this->character.focus_x = FIXED_DEC(-100,1);
+	this->character.focus_y = FIXED_DEC(-80,1);
+	this->character.focus_zoom = FIXED_DEC(05,10);
+	}
+	
+	if ((stage.stage_id == StageId_1_2) && stage.timercount >= 11640)
+	{
+	this->character.focus_x = FIXED_DEC(-50,1);
+	this->character.focus_y = FIXED_DEC(-65,1);
+	this->character.focus_zoom = FIXED_DEC(1,1);
+	}
+	
 	//Handle animation updates
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
 	    (character->animatable.anim != CharAnim_Left &&
@@ -215,24 +229,6 @@ void Char_BF_Tick(Character *character)
 		     character->animatable.anim != PlayerAnim_RightMiss) &&
 			(stage.song_step & 0x7) == 0)
 			character->set_anim(character, CharAnim_Idle);
-		
-		//Stage specific animations
-		if (stage.note_scroll >= 0)
-		{
-			switch (stage.stage_id)
-			{
-				case StageId_1_4: //Tutorial peace
-					if (stage.song_step > 64 && stage.song_step < 192 && (stage.song_step & 0x3F) == 60)
-						character->set_anim(character, PlayerAnim_Peace);
-					break;
-				case StageId_1_1: //Bopeebo peace
-					if ((stage.song_step & 0x1F) == 28)
-						character->set_anim(character, PlayerAnim_Peace);
-					break;
-				default:
-					break;
-			}
-		}
 	}
 	
 	//Retry screen
@@ -415,7 +411,7 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 	this->character.health_i = 0;
 	
 	this->character.focus_x = FIXED_DEC(-50,1);
-	this->character.focus_y = (stage.stage_id == StageId_1_4) ? FIXED_DEC(-85,1) : FIXED_DEC(-65,1);
+	this->character.focus_y = FIXED_DEC(-65,1);
 	this->character.focus_zoom = FIXED_DEC(1,1);
 	
 	//Load art
