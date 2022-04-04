@@ -114,33 +114,28 @@ void Char_OGDave_Tick(Character *character)
 	Char_OGDave *this = (Char_OGDave*)character;
 	
 	if (stage.stage_id == StageId_2_1 && stage.timercount >= 4490)
-	this->character.healthb_i = 16;
+	this->character.health_i = 16;
 
 	if (stage.stage_id == StageId_2_1 && stage.timercount >= 9700)
-	this->character.healthb_i = 3;
+	this->character.health_i = 3;
 
 	if (stage.stage_id == StageId_2_1 && stage.timercount >= 11985)
-	this->character.healthb_i = 16;
+	this->character.health_i = 16;
 
 	if (stage.stage_id == StageId_2_1 && stage.timercount >= 12105)
-	this->character.healthb_i = 3;
+	this->character.health_i = 3;
 
 	if (stage.stage_id == StageId_2_1 && stage.timercount >= 14055)
-	this->character.healthb_i = 17;
+	this->character.health_i = 17;
 
 	if (stage.stage_id == StageId_2_1 && stage.timercount >= 23040)
-	this->character.healthb_i = 18;
+	this->character.health_i = 18;
 
-<<<<<<< HEAD
 	if (stage.stage_id == StageId_2_1 && stage.timercount >= 28865)
-	this->character.healthb_i = 19;
-=======
-	if (stage.stage_id == StageId_2_1 && stage.timercount >= 28551)
 	this->character.health_i = 19;
->>>>>>> parent of 539e82b (doo doo)
 
 	if (stage.stage_id == StageId_2_1 && stage.timercount >= 34800)
-	this->character.healthb_i = 3;
+	this->character.health_i = 3;
 	
 	//Perform idle dance
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
@@ -196,11 +191,11 @@ Character *Char_OGDave_New(fixed_t x, fixed_t y)
 	Character_Init((Character*)this, x, y);
 	
 	//Set character stage information
-	this->character.healthb_i = 3;
+	this->character.health_i = 3;
 	
 	this->character.focus_x = FIXED_DEC(75,1);
 	this->character.focus_y = FIXED_DEC(180,1);
-	this->character.focus_zoom = FIXED_DEC(1,1);
+	this->character.focus_zoom = FIXED_DEC(07,10);
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\OGDAVE.ARC;1");

@@ -139,11 +139,7 @@ void Char_Bandu_Tick(Character *character)
 		Character_PerformIdle(character);
 
 	 Animatable_Animate(&character->animatable, (void*)this, Char_Bandu_SetFrame);
-	
-	this->character.number_i = 1;
-	this->character.swap_i = stage.song_step % 0x1;
-	this->character.swapdeath_i = stage.song_step % 0x1;
-	
+	 
 	if (stage.stage_id == StageId_1_2 && stage.timercount <= 11555)
     Character_Draw(character, &this->tex, &char_bandu_frame[this->frame]);
 
@@ -199,7 +195,7 @@ Character *Char_Bandu_New(fixed_t x, fixed_t y)
 	Character_Init((Character*)this, x, y);
 	
 	//Set character stage information
-	this->character.health_i = stage.tex_hud2;
+	this->character.health_i = 9;
 	
 	this->character.focus_x = FIXED_DEC(25,1);
 	this->character.focus_y = FIXED_DEC(-25,1);

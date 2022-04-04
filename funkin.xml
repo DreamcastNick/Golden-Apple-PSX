@@ -37,7 +37,6 @@
 			<dir name = "stage">
 				<file name = "hud0.tim" type = "data" source = "iso/stage/hud0.tim"/>
 				<file name = "hud1.tim" type = "data" source = "iso/stage/hud1.tim"/>
-				<file name = "hud2.tim" type = "data" source = "iso/stage/hud2.tim"/>
 				<file name = "hud0weeb.tim" type = "data" source = "iso/stage/hud0weeb.tim"/>
 			</dir>
 			
@@ -78,6 +77,7 @@
 			<dir name = "week2">
 				<!-- Background art -->
 				<file name = "back.arc" type = "data" source = "iso/week2/back.arc"/>
+				<file name = "hench.arc" type = "data" source = "iso/week2/hench.arc"/>
 				
 				<!-- Spookeez charts -->
 				<file name = "2.1e.cht" type = "data" source = "iso/chart/spookeez-easy.json.cht"/>
@@ -249,6 +249,9 @@
 				
 				<!-- Disrupt assets -->
 				<file name = "mess.arc" type = "data" source = "iso/disrupt/main.arc"/>
+				
+				<!-- Unfair assets -->
+				<file name = "unfair.arc" type = "data" source = "iso/unfair/main.arc"/>
 				
 				<!-- Girlfriend assets -->
 				<file name = "gf.arc" type = "data" source = "iso/gf/main.arc"/>

@@ -12,6 +12,18 @@
 #include "../mutil.h"
 #include "../timer.h"
 
+//Week 0 background structure
+typedef struct
+{
+	//Stage background base structure
+	StageBack back;
+	
+	//Textures
+	Gfx_Tex tex_back0; //Background
+	Gfx_Tex tex_back1; //Background 2
+	Gfx_Tex tex_back2; //Background 3
+} Back_Week0;
+
 //Week 0 background functions
 void Back_Week0_DrawBG(StageBack *back)
 {
@@ -57,12 +69,12 @@ void Back_Week0_DrawBG(StageBack *back)
 }
 
 static fixed_t week0_back_paraly[] = {
-	FIXED_DEC(120,100),
-	FIXED_DEC(120,100),
-	FIXED_DEC(120,100),
-	FIXED_DEC(120,100),
-	FIXED_DEC(56,10),
-	FIXED_DEC(104,10),
+	FIXED_DEC(240,100),
+	FIXED_DEC(240,100),
+	FIXED_DEC(240,100),
+	FIXED_DEC(240,100),
+	FIXED_DEC(112,10),
+	FIXED_DEC(208,10),
 };
 
 static fixed_t week0_back_warpx[] = {
@@ -75,22 +87,22 @@ static fixed_t week0_back_warpx[] = {
 };
 
 static fixed_t week0_back_warpy[] = {
-	FIXED_DEC(100,10),
-	FIXED_DEC(80,10),
-	FIXED_DEC(60,10),
-	FIXED_DEC(40,10),
-	FIXED_DEC(40,10),
-	FIXED_DEC(100,10),
+	FIXED_DEC(40,1),
+	FIXED_DEC(40,1),
+	FIXED_DEC(40,1),
+	FIXED_DEC(32,1),
+	FIXED_DEC(32,1),
+	FIXED_DEC(24,1),
 };
 
 static s32 Back_Week0_GetX(int x, int y)
 {
-	return ((fixed_t)x << (FIXED_SHIFT + 7)) + FIXED_DEC(-320,1) - FIXED_MUL(0, week0_back_paraly[y]) + ((MUtil_Cos((animf_count << 2) + ((x + y) << 5)) * week0_back_warpx[y]) >> 7);
+	return ((fixed_t)x << (FIXED_SHIFT + 7)) + FIXED_DEC(-480,1) - FIXED_MUL(0, week0_back_paraly[y]) + ((MUtil_Cos((animf_count << 2) + ((x + y) << 5)) * week0_back_warpx[y]) >> 7);
 }
 
 static s32 Back_Week0_GetY(int x, int y)
 {
-	return ((fixed_t)y << (FIXED_SHIFT + 6)) + FIXED_DEC(-150,1) - FIXED_MUL(0, week0_back_paraly[y]) + ((MUtil_Sin((animf_count << 2) + ((x + y) << 5)) * week0_back_warpy[y]) >> 7);
+	return ((fixed_t)y << (FIXED_SHIFT + 7)) + FIXED_DEC(-330,1) - FIXED_MUL(0, week0_back_paraly[y]) + ((MUtil_Sin((animf_count << 2) + ((x + y) << 5)) * week0_back_warpy[y]) >> 7);
 }
 
 void Back_Week0_DrawBG3(StageBack *back)
@@ -111,7 +123,7 @@ void Back_Week0_DrawBG3(StageBack *back)
 	//Draw 32x32 quads of the background
 	for (int y = 0; y < 5; y++)
 	{
-		RECT back_src = {0, y * 32, 32, 32};
+		RECT back_src = {0, y * 32, 64, 32};
 		for (int x = 0; x < 8; x++)
 		{
 			//Draw quad and increment source rect
@@ -123,7 +135,7 @@ void Back_Week0_DrawBG3(StageBack *back)
 				Stage_DrawTexArb(&this->tex_back2, &back_src, &back_dst[y][x], &back_dst[y][x + 1], &back_dst[y + 1][x], &back_dst[y + 1][x + 1], stage.camera.bzoom);
 			
 			if ((back_src.x += 32) >= 0xE0)
-			if ((back_src.y += 32) >= 0xE0)
+			if ((back_src.y += 64) >= 0xE0)
 				back_src.w--;
 		}
 	}

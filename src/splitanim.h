@@ -51,9 +51,7 @@ typedef struct Character
 	
 	//Character information
 	CharSpec spec;
-	Gfx_Tex health_i; //hud1.tim
-	u8 healthb_i;
-	u8 swap_i, swapdeath_i,number_i;
+	u8 health_i; //hud1.tim
 	fixed_t focus_x, focus_y, focus_zoom;
 	
 	//Animation state

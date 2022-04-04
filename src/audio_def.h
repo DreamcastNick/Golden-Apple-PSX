@@ -12,7 +12,7 @@ static const XA_TrackDef xa_tracks[] = {
 	{XA_Menu, XA_LENGTH(3840)},  //XA_GameOver
 	//WEEK1A.XA
 	{XA_Week1A, XA_LENGTH(19900)}, //XA_Bopeebo
-	{XA_Week1A, XA_LENGTH(32000)}, //XA_Fresh
+	{XA_Week1A, XA_LENGTH(31900)}, //XA_Fresh
 	//WEEK1B.XA
 	{XA_Week1B, XA_LENGTH(8667)}, //XA_Dadbattle
 	{XA_Week1B, XA_LENGTH(6800)}, //XA_Tutorial

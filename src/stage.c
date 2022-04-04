@@ -51,6 +51,13 @@ static const u8 note_anims[4][3] = {
 };
 
 //Stage definitions
+
+//check what opponent is singing
+boolean has3opponents;
+boolean opponent3sing;
+boolean opponent2sing;
+boolean opponentsing;
+
 #include "character/bf.h"
 #include "character/tdbf.h"
 #include "character/ogdave.h"
@@ -59,6 +66,7 @@ static const u8 note_anims[4][3] = {
 #include "character/robot.h"
 #include "character/bandu.h"
 #include "character/disrupt.h"
+#include "character/unfair.h"
 #include "character/gf.h"
 
 #include "stage/dummy.h"
@@ -598,6 +606,25 @@ void Stage_DrawTexCol(Gfx_Tex *tex, const RECT *src, const RECT_FIXED *dst, fixe
 	fixed_t wz = dst->w;
 	fixed_t hz = dst->h;
 	
+	switch(stage.stage_id)
+	{
+		case StageId_2_1:	
+		
+		if (tex == &stage.tex_hud0 && ((stage.stage_id == StageId_2_1) && stage.timercount >= 4490 && stage.timercount <= 4510|| (stage.timercount >= 9700) && stage.timercount <= 9720 || (stage.timercount >= 11985) && stage.timercount <= 11995 || (stage.timercount >= 12105) && stage.timercount <= 12125 || (stage.timercount >= 14055) && (stage.timercount <= 14075) || (stage.timercount >= 23040) && (stage.timercount <= 23060) || ((stage.timercount >= 28865) && stage.timercount <= 28885) || ((stage.timercount >= 34799) && stage.timercount <=  34819)))
+			return;
+	
+		if (tex == &stage.tex_hud1 && ((stage.stage_id == StageId_2_1) && stage.timercount >= 4490 && stage.timercount <= 4510|| (stage.timercount >= 9700) && stage.timercount <= 9720 || (stage.timercount >= 11985) && stage.timercount <= 11995 || (stage.timercount >= 12105) && stage.timercount <= 12125 || (stage.timercount >= 14055) && (stage.timercount <= 14075) || (stage.timercount >= 23040) && (stage.timercount <= 23060) || ((stage.timercount >= 28865) && stage.timercount <= 28885) || ((stage.timercount >= 34799) && stage.timercount <=  34819)))
+			return;
+	}
+	
+	if (tex == &stage.tex_hud0 || tex == &stage.tex_hud1)
+	{
+		//Don't draw if HUD and HUD is disabled
+		#ifdef STAGE_NOHUD
+			return;
+		#endif
+	}
+	
 	if (stage.stage_id >= StageId_6_1 && stage.stage_id <= StageId_6_3)
 	{
 		//Handle HUD drawing
@@ -700,63 +727,17 @@ void Stage_BlendTexArb(Gfx_Tex *tex, const RECT *src, const POINT_FIXED *p0, con
 }
 
 //Stage HUD functions
-static void Stage_DrawHealthAnim(s16 health, Gfx_Tex i, s8 ox, s16 swap_icon, s16 swap_deathicon, s16 number)
-{
-	//animate variable
-	u16 animicons, animicony;
-    animicons = animicony = 0;
-    
-	//animate code
-	if (stage.song_step >= 1)
-{
-	if ((ox < 0 && health < 18000)|| (ox > 0 && health > 2000))
-	animicons = (stage.utswap) ? (swap_icon + number *1)*24 : swap_icon*24;
-
-	else
-    animicons = (stage.utswap) ? (swap_deathicon + number*1)*24 : (number + swap_deathicon)*24;
-
-	while (animicons > 120)
-	 {
-	  animicons -= 144;
-	  animicony += 24;
-	 }
-}
-
-    //FntPrint("Ded %d", animicons);
-
-	//Get src and dst
-	fixed_t hx = (128 << FIXED_SHIFT) * (10000 - health) / 10000;
-	RECT src = {
-	    animicons,
-		16 + animicony,
-		24,
-		24
-	};
-	RECT_FIXED dst = {
-		hx + ox * FIXED_DEC(25,1) - FIXED_DEC(25,1),
-		FIXED_DEC(SCREEN_HEIGHT2 - 24 + 4 - 12, 1),
-		src.w << FIXED_SHIFT,
-		src.h << FIXED_SHIFT
-	};
-	if (stage.downscroll)
-		dst.y = -dst.y - dst.h;
-
-	//Draw health icon
-	Stage_DrawTex(&i, &src, &dst, FIXED_MUL(stage.bump, stage.sbump));
-}
-
-//Stage HUD functions
-static void Stage_DrawHealth(s16 healthb, u8 i, s8 ox)
+static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 {
 	//Check if we should use 'dying' frame
 	s8 dying;
 	if (ox < 0)
-		dying = (healthb >= 18000) * 24;
+		dying = (health >= 18000) * 24;
 	else
-		dying = (healthb <= 2000) * 24;
+		dying = (health <= 2000) * 24;
 	
 	//Get src and dst
-	fixed_t hx = (128 << FIXED_SHIFT) * (10000 - healthb) / 10000;
+	fixed_t hx = (128 << FIXED_SHIFT) * (10000 - health) / 10000;
 	RECT src = {
 		(i % 5) * 48 + dying,
 		16 + (i / 5) * 24,
@@ -1074,13 +1055,6 @@ static void Stage_LoadPlayer(void)
 	stage.player = stage.stage_def->pchar.new(stage.stage_def->pchar.x, stage.stage_def->pchar.y);
 }
 
-static void Stage_LoadOpponent(void)
-{
-	//Load opponent character
-	Character_Free(stage.opponent);
-	stage.opponent = stage.stage_def->ochar.new(stage.stage_def->ochar.x, stage.stage_def->ochar.y);
-}
-
 static void Stage_LoadOpponent2(void)
 {
 	Character_Free(stage.opponent2);
@@ -1111,16 +1085,6 @@ static void Stage_LoadOpponent4(void)
 		stage.opponent4 = NULL;
 }
 
-static void Stage_LoadGirlfriend(void)
-{
-	//Load girlfriend character
-	Character_Free(stage.gf);
-	if (stage.stage_def->gchar.new != NULL)
-		stage.gf = stage.stage_def->gchar.new(stage.stage_def->gchar.x, stage.stage_def->gchar.y);
-	else
-		stage.gf = NULL;
-}
-
 static void Stage_LoadGirlfriend2(void)
 {
 	//Load girlfriend character
@@ -1129,6 +1093,23 @@ static void Stage_LoadGirlfriend2(void)
 		stage.gf2 = stage.stage_def->gchar2.new(stage.stage_def->gchar2.x, stage.stage_def->gchar2.y);
 	else
 		stage.gf2 = NULL;
+}
+
+static void Stage_LoadOpponent(void)
+{
+	//Load opponent character
+	Character_Free(stage.opponent);
+	stage.opponent = stage.stage_def->ochar.new(stage.stage_def->ochar.x, stage.stage_def->ochar.y);
+}
+
+static void Stage_LoadGirlfriend(void)
+{
+	//Load girlfriend character
+	Character_Free(stage.gf);
+	if (stage.stage_def->gchar.new != NULL)
+		stage.gf = stage.stage_def->gchar.new(stage.stage_def->gchar.x, stage.stage_def->gchar.y);
+	else
+		stage.gf = NULL;
 }
 
 static void Stage_LoadStage(void)
@@ -1332,7 +1313,9 @@ static void Stage_LoadState(void)
 		
 		stage.player_state[i].health = 10000;
 		stage.player_state[i].combo = 0;
-		
+		opponentsing = 1;
+		opponent2sing = 1;
+		opponent3sing = 1;	
 		stage.player_state[i].refresh_score = false;
 		stage.player_state[i].score = 0;
 		strcpy(stage.player_state[i].score_text, "0");
@@ -1359,12 +1342,6 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 		Gfx_LoadTex(&stage.tex_hud0, IO_Read("\\STAGE\\HUD0WEEB.TIM;1"), GFX_LOADTEX_FREE);
 	else
 		Gfx_LoadTex(&stage.tex_hud0, IO_Read("\\STAGE\\HUD0.TIM;1"), GFX_LOADTEX_FREE);
-	if (id == StageId_1_3)
-	Gfx_LoadTex(&stage.tex_hud2, IO_Read("\\STAGE\\HUD2.TIM;1"), GFX_LOADTEX_FREE);
-	else
-	Gfx_LoadTex(&stage.tex_hud1, IO_Read("\\STAGE\\HUD1.TIM;1"), GFX_LOADTEX_FREE);
-	Gfx_LoadTex(&stage.tex_hud2, IO_Read("\\STAGE\\HUD2.TIM;1"), GFX_LOADTEX_FREE);
-	if (id == StageId_1_3)
 	Gfx_LoadTex(&stage.tex_hud1, IO_Read("\\STAGE\\HUD1.TIM;1"), GFX_LOADTEX_FREE);
 	
 	//Load stage background
@@ -1675,7 +1652,102 @@ void Stage_Tick(void)
 
 			FntPrint("STEP: %d", stage.song_step);
 			FntPrint("\nTIMERCOUNT: %d", stage.timercount);
-		
+			
+			//does the stage have 3 opponents
+			if (has3opponents == 0)
+			{
+				opponentsing = 1;
+				opponent2sing = 1;
+				opponent3sing = 1;
+			}
+			else if (stage.stage_id == StageId_1_2)
+			{
+				switch (stage.song_step)
+				{
+					case 0:
+						opponentsing = 0;
+						opponent2sing = 1;
+						opponent3sing = 0;	
+						break;
+					case 1087:
+						opponentsing = 0;
+						opponent2sing = 0;
+						opponent3sing = 1;	
+						break;
+					case 1343:
+						opponentsing = 0;
+						opponent2sing = 1;
+						opponent3sing = 1;
+						break;
+					case 1409:
+						opponentsing = 0;
+						opponent2sing = 0;
+						opponent3sing = 1;	
+						break;
+					case 1432:
+						opponentsing = 0;
+						opponent2sing = 1;
+						opponent3sing = 1;
+						break;
+					case 1433:
+						opponentsing = 0;
+						opponent2sing = 0;
+						opponent3sing = 1;	
+						break;
+					case 1439:
+						opponentsing = 0;
+						opponent2sing = 1;
+						opponent3sing = 1;	
+						break;
+					case 1440:
+						opponentsing = 0;
+						opponent2sing = 0;
+						opponent3sing = 1;
+						break;
+					case 1472:
+						opponentsing = 0;
+						opponent2sing = 1;
+						opponent3sing = 0;	
+						break;
+					case 1535:
+						opponentsing = 0;
+						opponent2sing = 1;
+						opponent3sing = 1;	
+						break;
+					case 1636:
+						opponentsing = 0;
+						opponent2sing = 0;
+						opponent3sing = 1;
+						break;
+					case 2704:
+						opponentsing = 1;
+						opponent2sing = 0;
+						opponent3sing = 0;	
+						break;
+				}
+			}
+			else if (stage.stage_id == StageId_2_1)
+			{
+				switch (stage.song_step)
+				{
+					case 0:
+						opponentsing = 1;
+						opponent2sing = 1;
+						opponent3sing = 1;	
+						break;
+				}
+			}
+			else
+			{
+				opponentsing = 0;
+				opponent2sing = 0;
+				opponent3sing = 0;
+			}
+			if (stage.opponent3 != NULL)
+				has3opponents = 1;
+			else
+				has3opponents = 0;
+			
 			//Clear per-frame flags
 			stage.flag &= ~(STAGE_FLAG_JUST_STEP | STAGE_FLAG_SCORE_REFRESH);
 			
@@ -1905,25 +1977,36 @@ void Stage_Tick(void)
 								opponent_anote = note_anims[note->type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0];
 							}
 							note->type |= NOTE_FLAG_HIT;
+							
+							switch(stage.stage_id)
+							{
+								case StageId_1_2:
+							
+								if (stage.stage_id == StageId_1_2 && stage.timercount >= 4565)
+									if (stage.player_state[0].health >= 2000)
+										stage.player_state[0].health -= 90;
+							}
 						}
 					}
 					
 					if (opponent_anote != CharAnim_Idle)
 					{
+						if (opponentsing)
 						stage.opponent->set_anim(stage.opponent, opponent_anote);
-						if (stage.opponent2 != NULL)
+						if (stage.opponent2 != NULL && opponent2sing)
 						stage.opponent2->set_anim(stage.opponent2, opponent_anote);
-						if (stage.opponent3 != NULL)
+						if (stage.opponent3 != NULL && opponent3sing)
 						stage.opponent3->set_anim(stage.opponent3, opponent_anote);
 						if (stage.opponent4 != NULL)
 						stage.opponent4->set_anim(stage.opponent4, opponent_anote);
 					}
 					else if (opponent_snote != CharAnim_Idle)
 					{
+						if (opponentsing)
 						stage.opponent->set_anim(stage.opponent, opponent_snote);
-						if (stage.opponent2 != NULL)
+						if (stage.opponent2 != NULL && opponent2sing)
 						stage.opponent2->set_anim(stage.opponent2, opponent_snote);
-						if (stage.opponent3 != NULL)
+						if (stage.opponent3 != NULL && opponent3sing)
 						stage.opponent3->set_anim(stage.opponent3, opponent_snote);
 						if (stage.opponent4 != NULL)
 						stage.opponent4->set_anim(stage.opponent4, opponent_snote);
@@ -2040,10 +2123,8 @@ void Stage_Tick(void)
 					stage.player_state[0].health = 20000;
 				
 				//Draw health heads
-				Stage_DrawHealth(stage.player_state[0].health, stage.player->healthb_i,    1);
-				Stage_DrawHealth(stage.player_state[0].health, stage.opponent->healthb_i, -1);
-				Stage_DrawHealthAnim(stage.player_state[1].health, stage.player->health_i,  1, stage.player->swap_i, stage.player->swapdeath_i, stage.player->number_i);
-				Stage_DrawHealthAnim(stage.player_state[1].health, stage.opponent->health_i, -1, stage.opponent->swap_i, stage.opponent->swapdeath_i, stage.opponent->number_i);
+				Stage_DrawHealth(stage.player_state[0].health, stage.player->health_i,    1);
+				Stage_DrawHealth(stage.player_state[0].health, stage.opponent->health_i, -1);
 				
 				//Draw health bar
 				RECT health_fill = {0, 0, 256 - (256 * stage.player_state[0].health / 20000), 8};
@@ -2067,13 +2148,18 @@ void Stage_Tick(void)
 			
 			//Tick characters
 			stage.player->tick(stage.player);
-
+			
 			if (stage.opponent2 != NULL)
 			stage.opponent2->tick(stage.opponent2);
 			if (stage.opponent3 != NULL)
 			stage.opponent3->tick(stage.opponent3);
 			if (stage.opponent4 != NULL)
 			stage.opponent4->tick(stage.opponent4);
+			
+			//Tick girlfriend2
+			if (stage.gf2 != NULL)
+				stage.gf2->tick(stage.gf2);
+			
 			stage.opponent->tick(stage.opponent);
 			
 			//Draw stage middle
@@ -2083,8 +2169,6 @@ void Stage_Tick(void)
 			//Tick girlfriend
 			if (stage.gf != NULL)
 				stage.gf->tick(stage.gf);
-			if (stage.gf2 != NULL)
-				stage.gf2->tick(stage.gf2);
 			
 			//Tick background objects
 			ObjectList_Tick(&stage.objlist_bg);
@@ -2113,18 +2197,18 @@ void Stage_Tick(void)
 			
 			//Free opponent and girlfriend
 			Stage_SwapChars();
-			Character_Free(stage.opponent);
-			stage.opponent = NULL;
 			Character_Free(stage.opponent2);
 			stage.opponent2 = NULL;
 			Character_Free(stage.opponent3);
 			stage.opponent3 = NULL;
 			Character_Free(stage.opponent4);
 			stage.opponent4 = NULL;
-			Character_Free(stage.gf);
-			stage.gf = NULL;
 			Character_Free(stage.gf2);
 			stage.gf2 = NULL;
+			Character_Free(stage.opponent);
+			stage.opponent = NULL;
+			Character_Free(stage.gf);
+			stage.gf = NULL;
 			
 			//Reset stage state
 			stage.flag = 0;

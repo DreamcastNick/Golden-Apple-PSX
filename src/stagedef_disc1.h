@@ -1,7 +1,7 @@
 	{ //StageId_1_1 (Bopeebo)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
-		{Char_Bandu_New,  FIXED_DEC(0,1),   FIXED_DEC(112,1)},
+		{Char_OGDave_New,  FIXED_DEC(0,1),   FIXED_DEC(112,1)},
 		{NULL},
 		{NULL},
 		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
@@ -21,13 +21,12 @@
 	{ //StageId_1_2 (Fresh)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_Unfair_New,  FIXED_DEC(-128,1),   FIXED_DEC(-220,1)},
 		{Char_Bandu_New,  FIXED_DEC(-128,1),   FIXED_DEC(-10,1)},
-		{Char_Disrupt_New,  FIXED_DEC(-156,1),   FIXED_DEC(-36,1)},
-		{NULL},
+		{Char_Disrupt_New,  FIXED_DEC(-196,1),   FIXED_DEC(-56,1)},
 		{NULL},
 		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
 		{NULL},
-
 		
 		//Stage background
 		Back_Week0_New,
@@ -42,7 +41,7 @@
 	{ //StageId_1_3 (Dadbattle)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
-		{Char_Bandu_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
+		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
 		{NULL},
 		{NULL},
 		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},

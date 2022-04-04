@@ -5,7 +5,6 @@ all: \
 	iso/font/arial.tim \
 	iso/stage/hud0.tim \
 	iso/stage/hud1.tim \
-	iso/stage/hud2.tim \
 	iso/stage/hud0weeb.tim \
 	iso/bf/main.arc \
 	iso/bf/dead.arc \
@@ -16,12 +15,14 @@ all: \
 	iso/robot/main.arc \
 	iso/bandu/main.arc \
 	iso/disrupt/main.arc \
+	iso/unfair/main.arc \
 	iso/gf/main.arc \
 	iso/gf/tut.arc \
 	iso/gf/speaker.tim \
 	iso/week0/back.arc \
 	iso/week1/back.arc \
 	iso/week2/back.arc \
+	iso/week2/hench.arc \
 	iso/week3/back.arc \
 	iso/week4/back.arc \
 	iso/week4/hench.arc \
@@ -62,6 +63,9 @@ iso/bandu/main.arc: iso/bandu/idlea0.tim iso/bandu/idlea1.tim iso/bandu/idlea2.t
 # Disrupt
 iso/disrupt/main.arc: iso/disrupt/idle0.tim iso/disrupt/idle1.tim iso/disrupt/idle2.tim iso/disrupt/idle3.tim iso/disrupt/idle4.tim iso/disrupt/idle5.tim iso/disrupt/idle6.tim iso/disrupt/idle7.tim iso/disrupt/left0.tim iso/disrupt/left1.tim iso/disrupt/down0.tim iso/disrupt/down1.tim iso/disrupt/up0.tim iso/disrupt/up1.tim iso/disrupt/right0.tim iso/disrupt/right1.tim iso/disrupt/huh0.tim iso/disrupt/huh1.tim iso/disrupt/huh2.tim iso/disrupt/huh3.tim iso/disrupt/huh4.tim
 
+# Unfair
+iso/unfair/main.arc: iso/unfair/idle0.tim iso/unfair/idle1.tim iso/unfair/idle2.tim iso/unfair/idle3.tim iso/unfair/left0.tim iso/unfair/left1.tim iso/unfair/down0.tim iso/unfair/down1.tim iso/unfair/up0.tim iso/unfair/up1.tim iso/unfair/right0.tim iso/unfair/right1.tim iso/unfair/eat0.tim iso/unfair/eat1.tim iso/unfair/eat2.tim
+
 # GF
 iso/gf/main.arc: iso/gf/gf0.tim iso/gf/gf1.tim iso/gf/gf2.tim
 iso/gf/tut.arc: iso/gf/tut0.tim iso/gf/tut1.tim
@@ -73,7 +77,8 @@ iso/week0/back.arc: iso/week0/back0.tim iso/week0/back1.tim iso/week0/back2.tim
 iso/week1/back.arc: iso/week1/back0.tim iso/week1/back1.tim
 
 # Week 2
-iso/week2/back.arc: iso/week2/back0.tim
+iso/week2/back.arc: iso/week2/back0.tim iso/week2/back1.tim iso/week2/back2.tim iso/week2/back3.tim
+iso/week2/hench.arc: iso/week2/hench0.tim iso/week2/hench1.tim
 
 # Week 3
 iso/week3/back.arc: iso/week3/back0.tim iso/week3/back1.tim iso/week3/back2.tim iso/week3/back3.tim iso/week3/back4.tim iso/week3/back5.tim

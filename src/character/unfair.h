@@ -4,12 +4,12 @@
   file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
 
-#ifndef PSXF_GUARD_WEEK0_H
-#define PSXF_GUARD_WEEK0_H
+#ifndef PSXF_GUARD_UNFAIR_H
+#define PSXF_GUARD_UNFAIR_H
 
-#include "../stage.h"
+#include "../splitanim.h"
 
-//Week 0 functions
-StageBack *Back_Week0_New();
+//Clucky character functions
+Character *Char_Unfair_New(fixed_t x, fixed_t y);
 
 #endif
