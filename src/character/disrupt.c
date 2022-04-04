@@ -120,7 +120,10 @@ void Char_Disrupt_Tick(Character *character)
 		Character_PerformIdle(character);
 
 	 Animatable_Animate(&character->animatable, (void*)this, Char_Disrupt_SetFrame);
-	 
+
+	if (stage.stage_id == StageId_1_1)
+    Character_Draw(character, &this->tex, &char_disrupt_frame[this->frame]);
+
 	if (stage.stage_id == StageId_1_2 && stage.timercount >= 4565 && stage.timercount <= 11555)
     Character_Draw(character, &this->tex, &char_disrupt_frame[this->frame]);
 	
@@ -176,9 +179,9 @@ Character *Char_Disrupt_New(fixed_t x, fixed_t y)
 	//Set character stage information
 	this->character.health_i = 8;
 	
-	this->character.focus_x = FIXED_DEC(140,1);
-	this->character.focus_y = FIXED_DEC(25,1);
-	this->character.focus_zoom = FIXED_DEC(05,10);
+	this->character.focus_x = (stage.stage_id == StageId_1_1) ? FIXED_DEC(50,1) : FIXED_DEC(140,1);
+	this->character.focus_y = (stage.stage_id == StageId_1_1) ? FIXED_DEC(25,1) : FIXED_DEC(25,1);
+	this->character.focus_zoom = (stage.stage_id == StageId_1_1) ? FIXED_DEC(1,1) : FIXED_DEC(05,10);
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\MESS.ARC;1");

@@ -1,7 +1,7 @@
 	{ //StageId_1_1 (Bopeebo)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
-		{Char_OGDave_New,  FIXED_DEC(0,1),   FIXED_DEC(112,1)},
+		{Char_Disrupt_New,  FIXED_DEC(-128,1),   FIXED_DEC(-10,1)},
 		{NULL},
 		{NULL},
 		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
@@ -9,10 +9,10 @@
 		{NULL},
 		
 		//Stage background
-		Back_Week2_New,
+		Back_Week3_New,
 		
 		//Song info
-		{FIXED_DEC(1,1),FIXED_DEC(1,1),FIXED_DEC(13,10)},
+		{FIXED_DEC(34,10),FIXED_DEC(34,10),FIXED_DEC(34,10)},
 		1, 1,
 		XA_Bopeebo, 0,
 		

@@ -1985,6 +1985,13 @@ void Stage_Tick(void)
 								if (stage.stage_id == StageId_1_2 && stage.timercount >= 4565)
 									if (stage.player_state[0].health >= 2000)
 										stage.player_state[0].health -= 90;
+								break;
+								
+								case StageId_1_1:
+								
+									if (stage.player_state[0].health >= 2000)
+										stage.player_state[0].health -= 90;
+								break;
 							}
 						}
 					}
