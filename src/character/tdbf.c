@@ -382,11 +382,11 @@ Character *Char_TDBF_New(fixed_t x, fixed_t y)
 	//Set character information
 	this->character.spec = CHAR_SPEC_MISSANIM;
 	
-	this->character.health_i = 0;
+	this->character.healthb_i = 0;
 	
-	this->character.focus_x = FIXED_DEC(-92,1);
-	this->character.focus_y = FIXED_DEC(-120,1);
-	this->character.focus_zoom = FIXED_DEC(07,10);
+	this->character.focus_x = FIXED_DEC(-60,1);
+	this->character.focus_y = FIXED_DEC(-72,1);
+	this->character.focus_zoom = FIXED_DEC(1,1);
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\3DBF.ARC;1");

@@ -87,6 +87,7 @@ int main(int argc, char *argv[])
 	for (auto &i : song_info["notes"]) //Iterate through sections
 	{
 		bool is_opponent = i["mustHitSection"] != true; //Note: swapped
+		bool is_opponent2 = i["bambiSection"] != true; //Note: swapped
 		
 		//Read section
 		Section new_section;
@@ -119,9 +120,13 @@ int main(int argc, char *argv[])
 			new_note.type = (uint8_t)j[1] & (3 | NOTE_FLAG_OPPONENT | NOTE_FLAG_OPPONENT2);
 			if (is_opponent)
 				new_note.type ^= NOTE_FLAG_OPPONENT;
+			if (is_opponent2)
+				new_note.type ^= NOTE_FLAG_OPPONENT2;
 			if (j[3] == true)
 				new_note.type |= NOTE_FLAG_ALT_ANIM;
 			else if ((new_note.type & NOTE_FLAG_OPPONENT) && is_alt)
+				new_note.type |= NOTE_FLAG_ALT_ANIM;
+			if ((new_note.type & NOTE_FLAG_OPPONENT2) && is_alt)
 				new_note.type |= NOTE_FLAG_ALT_ANIM;
 			if (sustain >= 0)
 				new_note.type |= NOTE_FLAG_SUSTAIN_END;

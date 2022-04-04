@@ -21,6 +21,7 @@
 //Stage constants
 #define STAGE_PERFECT //Play all notes perfectly
 
+
 #define INPUT_LEFT  (PAD_LEFT  | PAD_SQUARE)
 #define INPUT_DOWN  (PAD_DOWN  | PAD_CROSS)
 #define INPUT_UP    (PAD_UP    | PAD_TRIANGLE)
@@ -178,11 +179,12 @@ typedef struct
 	fixed_t arrow_hitan[4]; //Arrow hit animation for presses
 	
 	s16 health;
+	s16 healthb;
 	u16 combo;
 	
 	boolean refresh_score;
-	u32 score, max_score;
-	char score_text[36];
+	s32 score, max_score;
+	char score_text[24];
 	
 	u16 pad_held, pad_press;
 } PlayerState;
@@ -196,7 +198,7 @@ typedef struct
 	u32 offset;
 	
 	//HUD textures
-	Gfx_Tex tex_hud0, tex_hud1;
+	Gfx_Tex tex_hud0, tex_hud1, tex_hud2;
 	
 	//Stage data
 	const StageDef *stage_def;
@@ -246,7 +248,13 @@ typedef struct
 	u16 step_base;
 	Section *section_base;
 	
+<<<<<<< HEAD
+	s16 utswap;
+	
 	s32 song_step;
+=======
+	s16 song_step;
+>>>>>>> parent of 539e82b (doo doo)
 	
 	s32 timercount;
 	
@@ -254,7 +262,7 @@ typedef struct
 	u8 gf2_speed; //Typically 4 steps, changes in Fresh
 	
 	PlayerState player_state[2];
-	u32 max_score;
+	s32 max_score;
 	
 	enum
 	{

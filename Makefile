@@ -32,7 +32,6 @@ SRCS = src/main.c \
        src/character/tdbf.c \
        src/character/bandu.c \
        src/character/disrupt.c \
-       src/character/unfair.c \
        src/character/speaker.c \
        src/character/ogdave.c \
        src/character/garett.c \

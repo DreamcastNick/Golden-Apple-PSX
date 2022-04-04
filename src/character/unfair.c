@@ -117,10 +117,10 @@ void Char_Unfair_Tick(Character *character)
 	Char_Unfair *this = (Char_Unfair*)character;
 	
 	if (stage.stage_id == StageId_1_2 && stage.timercount >= 4565)
-	this->character.health_i = 10;
+	this->character.healthb_i = 10;
 
 	if (stage.stage_id == StageId_1_2 && stage.timercount >= 11210)
-	this->character.health_i = 11;
+	this->character.healthb_i = 11;
 
 	//Perform idle dance
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
@@ -181,7 +181,7 @@ Character *Char_Unfair_New(fixed_t x, fixed_t y)
 	Character_Init((Character*)this, x, y);
 	
 	//Set character stage information
-	this->character.health_i = 9;
+	this->character.healthb_i = 9;
 	
 	this->character.focus_x = FIXED_DEC(50,1);
 	this->character.focus_y = FIXED_DEC(-25,1);

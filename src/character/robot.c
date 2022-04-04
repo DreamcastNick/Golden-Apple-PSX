@@ -184,11 +184,11 @@ Character *Char_Robot_New(fixed_t x, fixed_t y)
 	Character_Init((Character*)this, x, y);
 	
 	//Set character stage information
-	this->character.health_i = 19;
+	this->character.healthb_i = 19;
 	
-	this->character.focus_x = FIXED_DEC(136,1);
-	this->character.focus_y = FIXED_DEC(86,1);
-	this->character.focus_zoom = FIXED_DEC(07,10);
+	this->character.focus_x = FIXED_DEC(68,1);
+	this->character.focus_y = FIXED_DEC(116,1);
+	this->character.focus_zoom = FIXED_DEC(1,1);
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\ROBOT.ARC;1");
