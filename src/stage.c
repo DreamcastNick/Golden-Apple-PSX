@@ -58,8 +58,10 @@ boolean opponent3sing;
 boolean opponent2sing;
 boolean opponentsing;
 
+#include "character/title.h"
 #include "character/bf.h"
 #include "character/tdbf.h"
+#include "character/wfbf.h"
 #include "character/ogdave.h"
 #include "character/garett.h"
 #include "character/diaman.h"
@@ -67,6 +69,9 @@ boolean opponentsing;
 #include "character/bandu.h"
 #include "character/disrupt.h"
 #include "character/unfair.h"
+#include "character/cripple.h"
+#include "character/wfdave.h"
+#include "character/badai.h"
 #include "character/gf.h"
 
 #include "stage/dummy.h"
@@ -78,6 +83,7 @@ boolean opponentsing;
 #include "stage/week5.h"
 #include "stage/week6.h"
 #include "stage/week7.h"
+#include "stage/week8.h"
 
 static const StageDef stage_defs[StageId_Max] = {
 	#include "stagedef_disc1.h"

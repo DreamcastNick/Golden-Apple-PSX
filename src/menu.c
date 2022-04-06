@@ -6,6 +6,7 @@
 
 #include "menu.h"
 
+#include "stage.h"
 #include "mem.h"
 #include "main.h"
 #include "timer.h"
@@ -22,7 +23,7 @@
 #include "loadscr.h"
 
 #include "stage.h"
-#include "character/gf.h"
+#include "character/title.h"
 
 //Menu messages
 static const char *funny_messages[][2] = {
@@ -103,6 +104,10 @@ static struct
 		{
 			fixed_t back_r, back_g, back_b;
 		} freeplay;
+		struct
+		{
+			fixed_t back_r, back_g, back_b;
+		} mods;
 	#ifdef PSXF_NETWORK
 		struct
 		{
@@ -134,7 +139,7 @@ static struct
 	} page_param;
 	
 	//Menu assets
-	Gfx_Tex tex_back, tex_ng, tex_story, tex_title;
+	Gfx_Tex tex_back, tex_back0, tex_back1, tex_back2, tex_back3, tex_back4, tex_back5, tex_ng, tex_story, tex_title;
 	FontData font_bold, font_arial;
 	
 	Character *gf; //Title Girlfriend
@@ -209,6 +214,70 @@ static void Menu_DrawBack(boolean flash, s32 scroll, u8 r0, u8 g0, u8 b0, u8 r1,
 {
 	RECT back_src = {0, 0, 255, 255};
 	RECT back_dst = {0, -scroll - SCREEN_WIDEADD2, SCREEN_WIDTH, SCREEN_WIDTH * 4 / 5};
+
+	switch (menu.next_page)
+	{	
+		case MenuPage_Freeplay:
+		{
+			switch(menu.page_param.stage.id = menu.select)
+			{
+				case StageId_1_1:
+					Gfx_DrawTexCol(&menu.tex_back4, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_1_2:
+					Gfx_DrawTexCol(&menu.tex_back1, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_1_3:
+					Gfx_DrawTexCol(&menu.tex_back2, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_1_4:
+					Gfx_DrawTexCol(&menu.tex_back3, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_2_1:
+					Gfx_DrawTexCol(&menu.tex_back0, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_2_2:
+					Gfx_DrawTexCol(&menu.tex_back5, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_2_3:
+					Gfx_DrawTexCol(&menu.tex_back5, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_2_4:
+					Gfx_DrawTexCol(&menu.tex_back5, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_3_1:
+					Gfx_DrawTexCol(&menu.tex_back5, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_3_2:
+					Gfx_DrawTexCol(&menu.tex_back5, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_3_3:
+					Gfx_DrawTexCol(&menu.tex_back5, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_4_1:
+					Gfx_DrawTexCol(&menu.tex_back5, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_4_2:
+					Gfx_DrawTexCol(&menu.tex_back5, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_4_3:
+					Gfx_DrawTexCol(&menu.tex_back5, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_4_4:
+					Gfx_DrawTexCol(&menu.tex_back5, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_5_1:
+					Gfx_DrawTexCol(&menu.tex_back5, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_5_2:
+					Gfx_DrawTexCol(&menu.tex_back5, &back_src, &back_dst, r0, g0, b0);
+				break;
+				case StageId_5_3:
+					Gfx_DrawTexCol(&menu.tex_back5, &back_src, &back_dst, r0, g0, b0);
+				break;
+			}
+		}
+	}
 	
 	if (flash || (animf_count & 4) == 0)
 		Gfx_DrawTexCol(&menu.tex_back, &back_src, &back_dst, r0, g0, b0);
@@ -292,6 +361,12 @@ void Menu_Load(MenuPage page)
 	//Load menu assets
 	IO_Data menu_arc = IO_Read("\\MENU\\MENU.ARC;1");
 	Gfx_LoadTex(&menu.tex_back,  Archive_Find(menu_arc, "back.tim"),  0);
+	Gfx_LoadTex(&menu.tex_back0,  Archive_Find(menu_arc, "back0.tim"),  0);
+	Gfx_LoadTex(&menu.tex_back1,  Archive_Find(menu_arc, "back1.tim"),  0);
+	Gfx_LoadTex(&menu.tex_back2,  Archive_Find(menu_arc, "back2.tim"),  0);
+	Gfx_LoadTex(&menu.tex_back3,  Archive_Find(menu_arc, "back3.tim"),  0);
+	Gfx_LoadTex(&menu.tex_back4,  Archive_Find(menu_arc, "back4.tim"),  0);
+	Gfx_LoadTex(&menu.tex_back5,  Archive_Find(menu_arc, "back5.tim"),  0);	
 	Gfx_LoadTex(&menu.tex_ng,    Archive_Find(menu_arc, "ng.tim"),    0);
 	Gfx_LoadTex(&menu.tex_story, Archive_Find(menu_arc, "story.tim"), 0);
 	Gfx_LoadTex(&menu.tex_title, Archive_Find(menu_arc, "title.tim"), 0);
@@ -300,7 +375,7 @@ void Menu_Load(MenuPage page)
 	FontData_Load(&menu.font_bold, Font_Bold);
 	FontData_Load(&menu.font_arial, Font_Arial);
 	
-	menu.gf = Char_GF_New(FIXED_DEC(62,1), FIXED_DEC(-12,1));
+	menu.gf = Char_Title_New(FIXED_DEC(-102,1), FIXED_DEC(-12,1));
 	stage.camera.x = stage.camera.y = FIXED_DEC(0,1);
 	stage.camera.bzoom = FIXED_UNIT;
 	stage.gf_speed = 4;
@@ -494,9 +569,9 @@ void Menu_Tick(void)
 			u32 x_rad = (logo_scale * (176 >> 1)) >> FIXED_SHIFT;
 			u32 y_rad = (logo_scale * (112 >> 1)) >> FIXED_SHIFT;
 			
-			RECT logo_src = {0, 0, 176, 112};
+			RECT logo_src = {0, 0, 172, 150};
 			RECT logo_dst = {
-				100 - x_rad + (SCREEN_WIDEADD2 >> 1),
+				220 - x_rad + (SCREEN_WIDEADD2 >> 1),
 				68 - y_rad,
 				x_rad << 1,
 				y_rad << 1
@@ -516,13 +591,13 @@ void Menu_Tick(void)
 				u8 press_g = (58  + ((press_lerp * (255 - 58))  >> 8)) >> 1;
 				u8 press_b = (206 + ((press_lerp * (255 - 206)) >> 8)) >> 1;
 				
-				RECT press_src = {0, 112, 256, 32};
+				RECT press_src = {0, 180, 256, 32};
 				Gfx_BlitTexCol(&menu.tex_title, &press_src, (SCREEN_WIDTH - 256) / 2, SCREEN_HEIGHT - 48, press_r, press_g, press_b);
 			}
 			else
 			{
 				//Flash white
-				RECT press_src = {0, (animf_count & 1) ? 144 : 112, 256, 32};
+				RECT press_src = {0, (animf_count & 1) ? 212 : 180, 256, 32};
 				Gfx_BlitTex(&menu.tex_title, &press_src, (SCREEN_WIDTH - 256) / 2, SCREEN_HEIGHT - 48);
 			}
 			
@@ -669,25 +744,26 @@ void Menu_Tick(void)
 				StageId stage;
 				u32 col;
 				const char *text;
+				boolean difficulty;
 			} menu_options[] = {
-				{StageId_1_1, 0xFF9271FD, "DISRUPTION"},
-				{StageId_1_2, 0xFF9271FD, "APPLECORE"},
-				{StageId_1_3, 0xFF9271FD, "DISABILIY"},
-				{StageId_1_4, 0xFF9271FD, "WIREFRAME"},
-				{StageId_2_1, 0xFF223344, "ALGEBRA"},
-				{StageId_2_2, 0xFF223344, "SUGAR RUSH"},
-				{StageId_2_3, 0xFF223344, "ORGIN"},
-				{StageId_2_4, 0xFF223344, "METALLIC"},
-				{StageId_3_1, 0xFF941653, "STRAWBERRY"},
-				{StageId_3_2, 0xFF941653, "KEYBOARD"},
-				{StageId_3_3, 0xFF941653, "UGH"},
-				{StageId_4_1, 0xFFFC96D7, "CYCLES"},
-				{StageId_4_2, 0xFFFC96D7, "THUNDERSTORM"},
-				{StageId_4_3, 0xFFFC96D7, "WHEELS"},
-				{StageId_4_4, 0xFFFC96D7, "DAVE X BAMBI SHIPPING CUTE"},
-				{StageId_5_1, 0xFFA0D1FF, "RECOVERED PROJECT"},
-				{StageId_5_2, 0xFFA0D1FF, "SART PRODUCER"},
-				{StageId_5_3, 0xFFA0D1FF, "OLD STRAWBERRY"},
+				{StageId_1_1, 0xFFDFCD64, "DISRUPTION", false},
+				{StageId_1_2, 0xFFDFCD64, "APPLECORE", false},
+				{StageId_1_3, 0xFFDFCD64, "DISABILIY", false},
+				{StageId_1_4, 0xFFDFCD64, "WIREFRAME", false},
+				{StageId_2_1, 0xFFDFCD64, "ALGEBRA", false},
+				{StageId_2_2, 0xFF00A012, "SUGAR RUSH", false},
+				{StageId_2_3, 0xFF00A012, "ORIGIN", false},
+				{StageId_2_4, 0xFF00A012, "METALLIC", false},
+				{StageId_3_1, 0xFF00A012, "STRAWBERRY", false},
+				{StageId_3_2, 0xFF00A012, "KEYBOARD", false},
+				{StageId_3_3, 0xFF00A012, "UGH", false},
+				{StageId_4_1, 0xFF00A012, "CYCLES", false},
+				{StageId_4_2, 0xFF4059E1, "THUNDERSTORM", false},
+				{StageId_4_3, 0xFF4059E1, "WHEELS", false},
+				{StageId_4_4, 0xFF4059E1, "DAVE X BAMBI SHIPPING CUTE", false},
+				{StageId_5_1, 0xFF4059E1, "RECOVERED PROJECT", false},
+				{StageId_5_2, 0xFF000000, "SART PRODUCER", false},
+				{StageId_5_3, 0xFF00A012, "OLD STRAWBERRY", false},
 			};
 			
 			//Initialize page
@@ -709,7 +785,8 @@ void Menu_Tick(void)
 			);
 			
 			//Draw difficulty selector
-			Menu_DifficultySelector(SCREEN_WIDTH - 100, SCREEN_HEIGHT2 - 48);
+			if (menu_options[menu.select].difficulty)
+				Menu_DifficultySelector(SCREEN_WIDTH - 100, SCREEN_HEIGHT2 - 48);
 			
 			//Handle option and selection
 			if (menu.next_page == menu.page && Trans_Idle())
@@ -743,7 +820,7 @@ void Menu_Tick(void)
 				if (pad_state.press & PAD_CIRCLE)
 				{
 					menu.next_page = MenuPage_Main;
-					menu.next_select = 1; //Freeplay
+					menu.next_select = 0; //Freeplay
 					Trans_Start();
 				}
 			}
@@ -791,27 +868,86 @@ void Menu_Tick(void)
 		}
 		case MenuPage_Mods:
 		{
+
 			static const struct
 			{
 				StageId stage;
 				const char *text;
+				u32 col;
 				boolean difficulty;
 			} menu_options[] = {
-				{StageId_Kapi_1, "VS KAPI", false},
-				{StageId_Clwn_1, "VS TRICKY", true},
-				{StageId_Clwn_4, "   EXPURGATION", false},
+				{StageId_Kapi_1, "	PORT DEVS", 0xFF0000, false},
+				{StageId_Kapi_1,    "", 0xFF0000, false},
+				{StageId_Clwn_1, "DREAMCASTNICK", 0xFF0000, false},
+				{StageId_Clwn_4, "IGORSOU", 0xFF0000, false},
+				{StageId_Clwn_4, "UNSTOPABLE", 0xFF0000, false},
+				{StageId_Kapi_1,    "", 0xFF0000, false},
+				{StageId_Kapi_1, "	PLAYTESTERS", 0xFF0000, false},
+				{StageId_Kapi_1,    "", 0xFF0000, false},
+				{StageId_Clwn_1, "ANYONE WHO DOWNLOADED", 0xFF0000, false},
+				{StageId_Clwn_1, "	THE PUBLIC BETA", 0xFF0000, false},
+				{StageId_Kapi_1,    "", 0xFF0000, false},
+				{StageId_Kapi_1, "	OG MOD DEVS", 0xFF0000, false},
+				{StageId_Kapi_1,    "", 0xFF0000, false},
+				{StageId_Clwn_1, "GRANTARE", 0xFF0000, false},
+				{StageId_Clwn_4, "LANCEY", 0xFF0000, false},
+				{StageId_Clwn_1, "CYNDAQUILDAC", 0xFF0000, false},
+				{StageId_Clwn_4, "BEZIEANIMS", 0xFF0000, false},
+				{StageId_Clwn_4, "RUBYSART", 0xFF0000, false},
+				{StageId_Kapi_1,    "", 0xFF0000, false},
+				{StageId_Kapi_1, "	CONTRIBUTORS", 0xFF0000, false},
+				{StageId_Kapi_1,    "", 0xFF0000, false},
+				{StageId_Clwn_1, "DRAGOLII", 0xFF0000, false},
+				{StageId_Clwn_4, "EMIKO", 0xFF0000, false},
+				{StageId_Clwn_4, "DANWIKI", 0xFF0000, false},
+				{StageId_Kapi_1,    "", 0xFF0000, false},
+				{StageId_Kapi_1, "	OG BETA TESTERS", 0xFF0000, false},
+				{StageId_Kapi_1,    "", 0xFF0000, false},
+				{StageId_Clwn_1, "MOLDYGH", 0xFF0000, false},
+				{StageId_Clwn_4, "MISSINGTEXTUREMAN", 0xFF0000, false},
+				{StageId_Clwn_4, "RAPPAREP LOL", 0xFF0000, false},
+				{StageId_Clwn_1, "THEBUILDERXD", 0xFF0000, false},
+				{StageId_Clwn_4, "TMPLER", 0xFF0000, false},
+				{StageId_Clwn_1, "CUZSIE", 0xFF0000, false},
+				{StageId_Clwn_4, "BILLY BOBBO", 0xFF0000, false},
+				{StageId_Clwn_4, "RODRI", 0xFF0000, false},
+				{StageId_Clwn_1, "GAMINGTASTIC", 0xFF0000, false},
+				{StageId_Clwn_4, "MEMORY", 0xFF0000, false},
+				{StageId_Clwn_1, "MFHX", 0xFF0000, false},
+				{StageId_Clwn_4, "KNOCKS", 0xFF0000, false},
+				{StageId_Clwn_4, "THATPIZZATOWERFAN", 0xFF0000, false},
+				{StageId_Clwn_1, "COTILES", 0xFF0000, false},
+				{StageId_Clwn_4, "EGGSDEEPRINCE", 0xFF0000, false},
+				{StageId_Clwn_1, "REALDEAL", 0xFF0000, false},
+				{StageId_Clwn_4, "SLOTER", 0xFF0000, false},
+				{StageId_Clwn_4, "GALCY TURRON", 0xFF0000, false},
+				{StageId_Clwn_1, "AWESOMEPANCAKE", 0xFF0000, false},
+				{StageId_Clwn_4, "WHATSDOWN", 0xFF0000, false},
+				{StageId_Clwn_4, "DAVEDOTCOM", 0xFF0000, false},
+				{StageId_Clwn_1, "NEWPLAYER", 0xFF0000, false},
+				{StageId_Clwn_4, "FOXNAP", 0xFF0000, false},
+				{StageId_Clwn_4, "GRUNF", 0xFF0000, false},
+				{StageId_Clwn_1, "JUKEBOX", 0xFF0000, false},
+				{StageId_Clwn_4, "LOG MAN", 0xFF0000, false},
+				{StageId_Clwn_1, "PUMPKIN", 0xFF0000, false},
+				{StageId_Clwn_4, "J REVERBFARTSFX", 0xFF0000, false},
+				{StageId_Clwn_4, "THELOSER", 0xFF0000, false},
+				{StageId_Clwn_1, "VILLEZEN", 0xFF0000, false},
 			};
-			
+
 			//Initialize page
 			if (menu.page_swap)
 			{
 				menu.scroll = COUNT_OF(menu_options) * FIXED_DEC(24 + SCREEN_HEIGHT2,1);
 				menu.page_param.stage.diff = StageDiff_Normal;
+				menu.page_state.mods.back_r = FIXED_DEC(255,1);
+				menu.page_state.mods.back_g = FIXED_DEC(255,1);
+				menu.page_state.mods.back_b = FIXED_DEC(255,1);
 			}
 			
 			//Draw page label
 			menu.font_bold.draw(&menu.font_bold,
-				"MODS",
+				"CREDITS",
 				16,
 				SCREEN_HEIGHT - 32,
 				FontAlign_Left
@@ -840,22 +976,11 @@ void Menu_Tick(void)
 						menu.select = 0;
 				}
 				
-				//Select option if cross is pressed
-				if (pad_state.press & (PAD_START | PAD_CROSS))
-				{
-					menu.next_page = MenuPage_Stage;
-					menu.page_param.stage.id = menu_options[menu.select].stage;
-					menu.page_param.stage.story = true;
-					if (!menu_options[menu.select].difficulty)
-						menu.page_param.stage.diff = StageDiff_Hard;
-					Trans_Start();
-				}
-				
 				//Return to main menu if circle is pressed
 				if (pad_state.press & PAD_CIRCLE)
 				{
 					menu.next_page = MenuPage_Main;
-					menu.next_select = 2; //Mods
+					menu.next_select = 1; //Mods
 					Trans_Start();
 				}
 			}
@@ -883,10 +1008,20 @@ void Menu_Tick(void)
 			}
 			
 			//Draw background
+			fixed_t tgt_r = (fixed_t)((menu_options[menu.select].col >> 16) & 0xFF) << FIXED_SHIFT;
+			fixed_t tgt_g = (fixed_t)((menu_options[menu.select].col >>  8) & 0xFF) << FIXED_SHIFT;
+			fixed_t tgt_b = (fixed_t)((menu_options[menu.select].col >>  0) & 0xFF) << FIXED_SHIFT;
+			
+			menu.page_state.mods.back_r += (tgt_r - menu.page_state.mods.back_r) >> 4;
+			menu.page_state.mods.back_g += (tgt_g - menu.page_state.mods.back_g) >> 4;
+			menu.page_state.mods.back_b += (tgt_b - menu.page_state.mods.back_b) >> 4;
+		
 			Menu_DrawBack(
 				true,
 				8,
-				197 >> 1, 240 >> 1, 95 >> 1,
+				menu.page_state.mods.back_r >> (FIXED_SHIFT + 1),
+				menu.page_state.mods.back_g >> (FIXED_SHIFT + 1),
+				menu.page_state.mods.back_b >> (FIXED_SHIFT + 1),
 				0, 0, 0
 			);
 			break;
@@ -916,7 +1051,7 @@ void Menu_Tick(void)
 					} spec_enum;
 				} spec;
 			} menu_options[] = {
-				{OptType_Enum,    "GAMEMODE", &stage.mode, {.spec_enum = {COUNT_OF(gamemode_strs), gamemode_strs}}},
+				//{OptType_Enum,    "GAMEMODE", &stage.mode, {.spec_enum = {COUNT_OF(gamemode_strs), gamemode_strs}}},
 				//{OptType_Boolean, "INTERPOLATION", &stage.expsync},
 				{OptType_Boolean, "GHOST TAP ", &stage.ghost, {.spec_boolean = {0}}},
 				{OptType_Boolean, "DOWNSCROLL", &stage.downscroll, {.spec_boolean = {0}}},
@@ -974,7 +1109,7 @@ void Menu_Tick(void)
 				if (pad_state.press & PAD_CIRCLE)
 				{
 					menu.next_page = MenuPage_Main;
-					menu.next_select = 3; //Options
+					menu.next_select = 2; //Options
 					Trans_Start();
 				}
 			}

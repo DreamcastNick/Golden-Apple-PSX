@@ -16,7 +16,7 @@
 		1, 1,
 		XA_Bopeebo, 0,
 		
-		StageId_1_2, 0
+		StageId_1_1, 0
 	},
 	{ //StageId_1_2 (Fresh)
 		//Characters
@@ -36,12 +36,12 @@
 		1, 2,
 		XA_Fresh, 2,
 		
-		StageId_1_3, 0
+		StageId_1_2, 0
 	},
 	{ //StageId_1_3 (Dadbattle)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
-		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
+		{Char_Cripple_New,  FIXED_DEC(-100,1),   FIXED_DEC(32,1)},
 		{NULL},
 		{NULL},
 		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
@@ -49,10 +49,10 @@
 		{NULL},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_Week4_New,
 		
 		//Song info
-		{FIXED_DEC(13,10),FIXED_DEC(15,10),FIXED_DEC(23,10)},
+		{FIXED_DEC(28,10),FIXED_DEC(28,10),FIXED_DEC(28,10)},
 		1, 3,
 		XA_Dadbattle, 0,
 		
@@ -60,19 +60,19 @@
 	},
 	{ //StageId_1_4 (Tutorial)
 		//Characters
-		{Char_BF_New, FIXED_DEC(60,1),  FIXED_DEC(100,1)},
-		{Char_GF_New,  FIXED_DEC(0,1),  FIXED_DEC(-15,1)}, //TODO
-		{NULL},
+		{Char_WFBF_New, FIXED_DEC(60,1),  FIXED_DEC(10,1)},
+		{Char_WFDave_New,  FIXED_DEC(-120,1),   FIXED_DEC(10,1)},
+		{Char_Badai_New,  FIXED_DEC(-120,1),   FIXED_DEC(10,1)},
 		{NULL},
 		{NULL},
 		{NULL},
 		{NULL},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_Week8_New,
 		
 		//Song info
-		{FIXED_DEC(1,1),FIXED_DEC(1,1),FIXED_DEC(1,1)},
+		{FIXED_DEC(3,1),FIXED_DEC(3,1),FIXED_DEC(3,1)},
 		1, 4,
 		XA_Tutorial, 2,
 		
@@ -97,7 +97,7 @@
 		2, 1,
 		XA_Spookeez, 0,
 		
-		StageId_2_2, 0
+		StageId_2_1, 0
 	},
 	{ //StageId_2_2 (South)
 		//Characters
@@ -117,7 +117,7 @@
 		2, 2,
 		XA_South, 2,
 		
-		StageId_2_3, 0
+		StageId_2_2, 0
 	},
 	{ //StageId_2_3 (Monster)
 		//Characters
@@ -178,7 +178,7 @@
 		3, 1,
 		XA_Pico, 0,
 		
-		StageId_3_2, STAGE_LOAD_FLAG
+		StageId_3_1, 0
 	},
 	{ //StageId_3_2 (Philly)
 		//Characters
@@ -198,7 +198,7 @@
 		3, 2,
 		XA_Philly, 2,
 		
-		StageId_3_3, STAGE_LOAD_FLAG
+		StageId_3_2, 0
 	},
 	{ //StageId_3_3 (Blammed)
 		//Characters
@@ -239,7 +239,7 @@
 		4, 1,
 		XA_SatinPanties, 0,
 		
-		StageId_4_2, STAGE_LOAD_FLAG
+		StageId_4_1, 0
 	},
 	{ //StageId_4_2 (High)
 		//Characters
@@ -259,7 +259,7 @@
 		4, 2,
 		XA_High, 2,
 		
-		StageId_4_3, STAGE_LOAD_FLAG
+		StageId_4_2, 0
 	},
 	{ //StageId_4_3 (MILF)
 		//Characters
@@ -320,7 +320,7 @@
 		5, 1,
 		XA_Cocoa, 0,
 		
-		StageId_5_2, STAGE_LOAD_FLAG
+		StageId_5_1, 0
 	},
 	{ //StageId_5_2 (Eggnog)
 		//Characters
@@ -340,7 +340,7 @@
 		5, 2,
 		XA_Eggnog, 2,
 		
-		StageId_5_3, STAGE_LOAD_FLAG
+		StageId_5_2, 0
 	},
 	{ //StageId_5_3 (Winter Horrorland)
 		//Characters

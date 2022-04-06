@@ -8,10 +8,10 @@
 		<identifiers
 			system        = "PLAYSTATION"
 			application   = "PLAYSTATION"
-			volume        = "PSXFUNKIN"
-			volume_set    = "PSXFUNKIN"
-			publisher     = "CUCKYDEV"
-			copyright     = "NINJAMUFFIN99"
+			volume        = "GAPPLEPSX"
+			volume_set    = "GAPPLEPSX"
+			publisher     = "DREAMCASTNICK"
+			copyright     = "GRANTARE"
 		/>
 		<license file="licensea.dat"/>
 		
@@ -19,7 +19,7 @@
 		<directory_tree>
 			<!-- System -->
 			<file name = "system.cnf" type = "data" source = "iso/system.cnf"/>
-			<file name = "SCUS_000.00" type = "data" source = "funkin.ps-exe"/>
+			<file name = "SCUS_125.21" type = "data" source = "funkin.ps-exe"/>
 			
 			<!-- Menu assets -->
 			<dir name = "menu">
@@ -44,9 +44,6 @@
 			<dir name = "week0">
 				<!-- Background art -->
 				<file name = "back.arc" type = "data" source = "iso/week0/back.arc"/>
-				
-				<!-- Alt Notes charts -->
-				<file name = "0.1p.cht" type = "data" source = "iso/week0/alt-notes.json.cht"/>
 			</dir>
 			
 			<!-- Week 1 assets -->
@@ -62,7 +59,6 @@
 				<file name = "1.2e.cht" type = "data" source = "iso/chart/fresh-easy.json.cht"/>
 				<file name = "1.2n.cht" type = "data" source = "iso/chart/fresh.json.cht"/>
 				<file name = "1.2h.cht" type = "data" source = "iso/chart/fresh-hard.json.cht"/>
-				<file name = "1.2p.cht" type = "data" source = "iso/week0/alt-notes.json.cht"/>
 				<!-- Dadbattle charts -->
 				<file name = "1.3e.cht" type = "data" source = "iso/chart/dadbattle-easy.json.cht"/>
 				<file name = "1.3n.cht" type = "data" source = "iso/chart/dadbattle.json.cht"/>
@@ -118,7 +114,6 @@
 			<dir name = "week4">
 				<!-- Background art -->
 				<file name = "back.arc" type = "data" source = "iso/week4/back.arc"/>
-				<file name = "hench.arc" type = "data" source = "iso/week4/hench.arc"/>
 				
 				<!-- Satin Panties charts -->
 				<file name = "4.1e.cht" type = "data" source = "iso/chart/satin-panties-easy.json.cht"/>
@@ -195,6 +190,12 @@
 				<file name = "7.3p.cht" type = "data" source = "iso/week7/picospeaker.json.cht"/>
 			</dir>
 			
+			<!-- Week 8 assets -->
+			<dir name = "week8">
+				<!-- Background art -->
+				<file name = "back.arc" type = "data" source = "iso/week8/back.arc"/>
+			</dir>
+			
 			<!-- Kapi assets -->
 			<dir name = "kapi">
 				<!-- Wocky charts -->
@@ -227,9 +228,13 @@
 			
 			<!-- Character assets -->
 			<dir name = "char">
+				<!-- Title Dave assets -->
+				<file name = "title.arc" type = "data" source = "iso/title/main.arc"/>
+				
 				<!-- Boyfriend assets -->
 				<file name = "bf.arc" type = "data" source = "iso/bf/main.arc"/>
 				<file name = "3dbf.arc" type = "data" source = "iso/bf/3d.arc"/>
+				<file name = "wfbf.arc" type = "data" source = "iso/bf/wf.arc"/>
 				<file name = "bfdead.arc" type = "data" source = "iso/bf/dead.arc"/>
 				
 				<!-- OGDave assets -->
@@ -252,6 +257,15 @@
 				
 				<!-- Unfair assets -->
 				<file name = "unfair.arc" type = "data" source = "iso/unfair/main.arc"/>
+				
+				<!-- Disability Dave assets -->
+				<file name = "cripple.arc" type = "data" source = "iso/cripple/main.arc"/>
+				
+				<!-- Wireframe Dave assets -->
+				<file name = "wfdave.arc" type = "data" source = "iso/wfdave/main.arc"/>
+				
+				<!-- Badai assets -->
+				<file name = "badai.arc" type = "data" source = "iso/badai/main.arc"/>
 				
 				<!-- Girlfriend assets -->
 				<file name = "gf.arc" type = "data" source = "iso/gf/main.arc"/>

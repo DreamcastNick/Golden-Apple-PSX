@@ -8,14 +8,14 @@ typedef struct
 
 static const XA_TrackDef xa_tracks[] = {
 	//MENU.XA
-	{XA_Menu, XA_LENGTH(11295)}, //XA_GettinFreaky
+	{XA_Menu, XA_LENGTH(8000)}, //XA_GettinFreaky
 	{XA_Menu, XA_LENGTH(3840)},  //XA_GameOver
 	//WEEK1A.XA
 	{XA_Week1A, XA_LENGTH(14600)}, //XA_Bopeebo
 	{XA_Week1A, XA_LENGTH(31900)}, //XA_Fresh
 	//WEEK1B.XA
-	{XA_Week1B, XA_LENGTH(8667)}, //XA_Dadbattle
-	{XA_Week1B, XA_LENGTH(6800)}, //XA_Tutorial
+	{XA_Week1B, XA_LENGTH(20200)}, //XA_Dadbattle
+	{XA_Week1B, XA_LENGTH(20200)}, //XA_Tutorial
 	//WEEK2A.XA
 	{XA_Week2A, XA_LENGTH(66100)}, //XA_Spookeez
 	{XA_Week2A, XA_LENGTH(8880)}, //XA_South
@@ -70,7 +70,7 @@ static const XA_Mp3 xa_mp3s[] = {
 	{"fresh", true},   //XA_Fresh
 	//WEEK1B.XA
 	{"dadbattle", true}, //XA_Dadbattle
-	{"tutorial", false}, //XA_Tutorial
+	{"tutorial", true}, //XA_Tutorial
 	//WEEK2A.XA
 	{"spookeez", true}, //XA_Spookeez
 	{"south", true},    //XA_South
