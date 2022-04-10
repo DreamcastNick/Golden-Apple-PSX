@@ -101,19 +101,19 @@
 	},
 	{ //StageId_2_2 (South)
 		//Characters
-		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
+		{Char_BF_New,      FIXED_DEC(40,1),   FIXED_DEC(45,1)},
+		{Char_Sugar_New,  FIXED_DEC(-140,1),   FIXED_DEC(-38,1)},
 		{NULL},
 		{NULL},
-		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
+		{Char_GFB_New,     FIXED_DEC(-20,1),  FIXED_DEC(-50,1)},
 		{NULL},
 		{NULL},
 		
 		//Stage background
-		Back_Week2_New,
+		Back_Week5_New,
 		
 		//Song info
-		{FIXED_DEC(11,10),FIXED_DEC(15,10),FIXED_DEC(22,10)},
+		{FIXED_DEC(35,10),FIXED_DEC(35,10),FIXED_DEC(35,10)},
 		2, 2,
 		XA_South, 2,
 		
@@ -121,8 +121,8 @@
 	},
 	{ //StageId_2_3 (Monster)
 		//Characters
-		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
+		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_Origin_New,  FIXED_DEC(-156,1),   FIXED_DEC(-10,1)},
 		{NULL},
 		{NULL},
 		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
@@ -130,10 +130,10 @@
 		{NULL},
 		
 		//Stage background
-		Back_Week2_New,
+		Back_Week3_New,
 		
 		//Song info
-		{FIXED_DEC(13,10),FIXED_DEC(13,10),FIXED_DEC(16,10)},
+		{FIXED_DEC(275,100),FIXED_DEC(275,100),FIXED_DEC(275,100)},
 		2, 3,
 		XA_Monster, 0,
 		
@@ -141,8 +141,8 @@
 	},	
 	{ //StageId_2_4 (Clucked)
 		//Characters
-		{Char_BF_New,       FIXED_DEC(60,1),  FIXED_DEC(100,1)},
-		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
+		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_Ringi_New,  FIXED_DEC(-132,1),   FIXED_DEC(24,1)},
 		{NULL},
 		{NULL},
 		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
@@ -150,10 +150,10 @@
 		{NULL},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_Week3_New,
 		
 		//Song info
-		{FIXED_DEC(25,10),FIXED_DEC(25,10),FIXED_DEC(25,10)},
+		{FIXED_DEC(3,1),FIXED_DEC(3,1),FIXED_DEC(3,1)},
 		2, 4,
 		XA_Clucked, 2,
 		
@@ -162,69 +162,8 @@
 	
 	{ //StageId_3_1 (Pico)
 		//Characters
-		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
-		{NULL},
-		{NULL},
-		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
-		{NULL},
-		{NULL},
-		
-		//Stage background
-		Back_Week3_New,
-		
-		//Song info
-		{FIXED_DEC(12,10),FIXED_DEC(14,10),FIXED_DEC(16,10)},
-		3, 1,
-		XA_Pico, 0,
-		
-		StageId_3_1, 0
-	},
-	{ //StageId_3_2 (Philly)
-		//Characters
-		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
-		{NULL},
-		{NULL},
-		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
-		{NULL},
-		{NULL},
-		
-		//Stage background
-		Back_Week3_New,
-		
-		//Song info
-		{FIXED_DEC(1,1),FIXED_DEC(13,10),FIXED_DEC(2,1)},
-		3, 2,
-		XA_Philly, 2,
-		
-		StageId_3_2, 0
-	},
-	{ //StageId_3_3 (Blammed)
-		//Characters
-		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
-		{NULL},
-		{NULL},
-		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
-		{NULL},
-		{NULL},
-		
-		//Stage background
-		Back_Week3_New,
-		
-		//Song info
-		{FIXED_DEC(12,10),FIXED_DEC(15,10),FIXED_DEC(23,10)},
-		3, 3,
-		XA_Blammed, 0,
-		
-		StageId_3_3, 0
-	},
-	
-	{ //StageId_4_1 (Satin Panties)
-		//Characters
-		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
+		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_BamBom_New,  FIXED_DEC(-132,1),   FIXED_DEC(24,1)},
 		{NULL},
 		{NULL},
 		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
@@ -235,7 +174,68 @@
 		Back_Week4_New,
 		
 		//Song info
-		{FIXED_DEC(13,10),FIXED_DEC(16,10),FIXED_DEC(18,10)},
+		{FIXED_DEC(275,100),FIXED_DEC(275,100),FIXED_DEC(275,100)},
+		3, 1,
+		XA_Pico, 0,
+		
+		StageId_3_1, 0
+	},
+	{ //StageId_3_2 (Philly)
+		//Characters
+		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_Bendu_New,  FIXED_DEC(-132,1),   FIXED_DEC(24,1)},
+		{NULL},
+		{NULL},
+		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
+		{NULL},
+		{NULL},
+		
+		//Stage background
+		Back_Week4_New,
+		
+		//Song info
+		{FIXED_DEC(25,10),FIXED_DEC(25,10),FIXED_DEC(25,10)},
+		3, 2,
+		XA_Philly, 2,
+		
+		StageId_3_2, 0
+	},
+	{ //StageId_3_3 (Blammed)
+		//Characters
+		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_Origin_New,  FIXED_DEC(-156,1),   FIXED_DEC(-10,1)},
+		{NULL},
+		{NULL},
+		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
+		{NULL},
+		{NULL},
+		
+		//Stage background
+		Back_Week3_New,
+		
+		//Song info
+		{FIXED_DEC(21,10),FIXED_DEC(21,10),FIXED_DEC(21,10)},
+		3, 3,
+		XA_Blammed, 0,
+		
+		StageId_3_3, 0
+	},
+	
+	{ //StageId_4_1 (Satin Panties)
+		//Characters
+		{Char_NTBandu_New,    FIXED_DEC(-200,1),  FIXED_DEC(100,1)},
+		{Char_Cycles_New,  FIXED_DEC(108,1),   FIXED_DEC(60,1)},
+		{NULL},
+		{NULL},
+		{NULL},
+		{NULL},
+		{NULL},
+		
+		//Stage background
+		Back_Week9_New,
+		
+		//Song info
+		{FIXED_DEC(31,10),FIXED_DEC(31,10),FIXED_DEC(31,10)},
 		4, 1,
 		XA_SatinPanties, 0,
 		
@@ -344,19 +344,19 @@
 	},
 	{ //StageId_5_3 (Winter Horrorland)
 		//Characters
-		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
+		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_BamBom_New,  FIXED_DEC(-132,1),   FIXED_DEC(24,1)},
 		{NULL},
 		{NULL},
-		{NULL},
+		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
 		{NULL},
 		{NULL},
 		
 		//Stage background
-		Back_Dummy_New,
+		Back_Week4_New,
 		
 		//Song info
-		{FIXED_DEC(1,1),FIXED_DEC(11,10),FIXED_DEC(13,10)},
+		{FIXED_DEC(25,10),FIXED_DEC(25,10),FIXED_DEC(25,10)},
 		5, 3,
 		XA_WinterHorrorland, 0,
 		

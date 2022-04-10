@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Defines the ISO project -->
-<iso_project image_name="funkin.bin" cue_sheet="funkin.cue" no_xa="0">
+<iso_project image_name="GapplePSX.bin" cue_sheet="GapplePSX.cue" no_xa="0">
 	<!-- Data track -->
 	<track type="data">
 		<!-- Identifiers -->
@@ -11,7 +11,7 @@
 			volume        = "GAPPLEPSX"
 			volume_set    = "GAPPLEPSX"
 			publisher     = "DREAMCASTNICK"
-			copyright     = "GRANTARE"
+			copyright     = "GRANTARE AND CO"
 		/>
 		<license file="licensea.dat"/>
 		
@@ -88,6 +88,8 @@
 				<file name = "2.3n.cht" type = "data" source = "iso/chart/monster.json.cht"/>
 				<file name = "2.3h.cht" type = "data" source = "iso/chart/monster-hard.json.cht"/>
 				<!-- Clucked charts -->
+				<file name = "2.4e.cht" type = "data" source = "iso/chart/clucked-hard.json.cht"/>
+				<file name = "2.4n.cht" type = "data" source = "iso/chart/clucked-hard.json.cht"/>
 				<file name = "2.4h.cht" type = "data" source = "iso/chart/clucked-hard.json.cht"/>
 			</dir>
 			
@@ -128,7 +130,9 @@
 				<file name = "4.3n.cht" type = "data" source = "iso/chart/milf.json.cht"/>
 				<file name = "4.3h.cht" type = "data" source = "iso/chart/milf-hard.json.cht"/>
 				<!-- Test charts -->
+				<file name = "4.4e.cht" type = "data" source = "iso/chart/test.json.cht"/>
 				<file name = "4.4n.cht" type = "data" source = "iso/chart/test.json.cht"/>
+				<file name = "4.4h.cht" type = "data" source = "iso/chart/test.json.cht"/>
 			</dir>
 			
 			<!-- Week 5 assets -->
@@ -196,36 +200,12 @@
 				<file name = "back.arc" type = "data" source = "iso/week8/back.arc"/>
 			</dir>
 			
-			<!-- Kapi assets -->
-			<dir name = "kapi">
-				<!-- Wocky charts -->
-				<file name = "kapi.1h.cht" type = "data" source = "iso/chart/wocky-hard.json.cht"/>
-				<!-- Beathoven charts -->
-				<file name = "kapi.2h.cht" type = "data" source = "iso/chart/beathoven-hard.json.cht"/>
-				<!-- Hairball charts -->
-				<file name = "kapi.3h.cht" type = "data" source = "iso/chart/hairball-hard.json.cht"/>
-				<!-- Nyaw charts -->
-				<file name = "kapi.4h.cht" type = "data" source = "iso/chart/nyaw-hard.json.cht"/>
+			<!-- Week 9 assets -->
+			<dir name = "week9">
+				<!-- Background art -->
+				<file name = "back.arc" type = "data" source = "iso/week9/back.arc"/>
 			</dir>
-			
-			<!-- Tricky assets -->
-			<dir name = "clwn">
-				<!-- Improbable Outset charts -->
-				<file name = "clwn.1e.cht" type = "data" source = "iso/chart/improbable-outset-easy.json.cht"/>
-				<file name = "clwn.1n.cht" type = "data" source = "iso/chart/improbable-outset.json.cht"/>
-				<file name = "clwn.1h.cht" type = "data" source = "iso/chart/improbable-outset-hard.json.cht"/>
-				<!-- Madness charts -->
-				<file name = "clwn.2e.cht" type = "data" source = "iso/chart/madness-easy.json.cht"/>
-				<file name = "clwn.2n.cht" type = "data" source = "iso/chart/madness.json.cht"/>
-				<file name = "clwn.2h.cht" type = "data" source = "iso/chart/madness-hard.json.cht"/>
-				<!-- Hellclown charts -->
-				<file name = "clwn.3e.cht" type = "data" source = "iso/chart/hellclown-easy.json.cht"/>
-				<file name = "clwn.3n.cht" type = "data" source = "iso/chart/hellclown.json.cht"/>
-				<file name = "clwn.3h.cht" type = "data" source = "iso/chart/hellclown-hard.json.cht"/>
-				<!-- Expurgation charts -->
-				<file name = "clwn.4h.cht" type = "data" source = "iso/chart/expurgation-hard.json.cht"/>
-			</dir>
-			
+
 			<!-- Character assets -->
 			<dir name = "char">
 				<!-- Title Dave assets -->
@@ -235,6 +215,7 @@
 				<file name = "bf.arc" type = "data" source = "iso/bf/main.arc"/>
 				<file name = "3dbf.arc" type = "data" source = "iso/bf/3d.arc"/>
 				<file name = "wfbf.arc" type = "data" source = "iso/bf/wf.arc"/>
+				<file name = "nt.arc" type = "data" source = "iso/bf/nt.arc"/>
 				<file name = "bfdead.arc" type = "data" source = "iso/bf/dead.arc"/>
 				
 				<!-- OGDave assets -->
@@ -266,6 +247,24 @@
 				
 				<!-- Badai assets -->
 				<file name = "badai.arc" type = "data" source = "iso/badai/main.arc"/>
+				
+				<!-- Sugar Rush Bandu assets -->
+				<file name = "sugar.arc" type = "data" source = "iso/sugar/main.arc"/>
+				
+				<!-- Origin Bandu assets -->
+				<file name = "origin.arc" type = "data" source = "iso/origin/main.arc"/>
+				
+				<!-- Ringi assets -->
+				<file name = "ringi.arc" type = "data" source = "iso/ringi/main.arc"/>
+				
+				<!-- BamBom assets -->
+				<file name = "bambom.arc" type = "data" source = "iso/bambom/main.arc"/>
+				
+				<!-- Bendu assets -->
+				<file name = "bendu.arc" type = "data" source = "iso/bendu/main.arc"/>
+				
+				<!-- Sart Producer Cycles assets -->
+				<file name = "cycles.arc" type = "data" source = "iso/cycles/main.arc"/>
 				
 				<!-- Girlfriend assets -->
 				<file name = "gf.arc" type = "data" source = "iso/gf/main.arc"/>

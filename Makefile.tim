@@ -10,6 +10,7 @@ all: \
 	iso/bf/dead.arc \
 	iso/bf/3d.arc \
 	iso/bf/wf.arc \
+	iso/bf/nt.arc \
 	iso/ogdave/main.arc \
 	iso/garett/main.arc \
 	iso/diaman/main.arc \
@@ -21,6 +22,12 @@ all: \
 	iso/title/main.arc \
 	iso/wfdave/main.arc \
 	iso/badai/main.arc \
+	iso/sugar/main.arc \
+	iso/origin/main.arc \
+	iso/ringi/main.arc \
+	iso/bambom/main.arc \
+	iso/bendu/main.arc \
+	iso/cycles/main.arc \
 	iso/gf/main.arc \
 	iso/gf/tut.arc \
 	iso/gf/speaker.tim \
@@ -34,7 +41,8 @@ all: \
 	iso/week6/back.arc \
 	iso/week6/back3.tim \
 	iso/week7/back.arc \
-	iso/week8/back.arc 
+	iso/week8/back.arc \
+	iso/week9/back.arc 
 
 iso/%.tim: iso/%.png
 	tools/funkintimconv/funkintimconv $@ $<
@@ -50,6 +58,7 @@ iso/bf/main.arc: iso/bf/bf0.tim iso/bf/bf1.tim iso/bf/bf2.tim iso/bf/bf3.tim iso
 iso/bf/dead.arc: iso/bf/dead1.tim iso/bf/dead2.tim iso/bf/retry.tim
 iso/bf/3d.arc: iso/bf/3dbf0.tim iso/bf/3dbf1.tim iso/bf/3dbf2.tim iso/bf/3dbf3.tim iso/bf/3dbf4.tim iso/bf/3ddead0.tim
 iso/bf/wf.arc: iso/bf/wfbf0.tim iso/bf/wfbf1.tim iso/bf/wfbf2.tim iso/bf/wfbf3.tim iso/bf/wfbf4.tim iso/bf/wfdead0.tim
+iso/bf/nt.arc: iso/bf/night0.tim iso/bf/night1.tim iso/bf/night2.tim iso/bf/night3.tim iso/bf/night4.tim iso/bf/ntdead0.tim
 
 # OGDave
 iso/ogdave/main.arc: iso/ogdave/idlea0.tim iso/ogdave/idleb0.tim iso/ogdave/lefta0.tim iso/ogdave/lefta1.tim iso/ogdave/leftb0.tim iso/ogdave/leftb1.tim iso/ogdave/downa0.tim iso/ogdave/downa1.tim iso/ogdave/downb0.tim iso/ogdave/downb1.tim iso/ogdave/upa0.tim iso/ogdave/upa1.tim iso/ogdave/upb0.tim iso/ogdave/upb1.tim iso/ogdave/righta0.tim iso/ogdave/righta1.tim iso/ogdave/rightb0.tim iso/ogdave/rightb1.tim
@@ -84,6 +93,24 @@ iso/wfdave/main.arc: iso/wfdave/idle0.tim iso/wfdave/idle1.tim iso/wfdave/idle2.
 # Badai
 iso/badai/main.arc: iso/badai/idle0.tim iso/badai/idle1.tim iso/badai/idle2.tim iso/badai/idle3.tim iso/badai/idle4.tim iso/badai/idle5.tim iso/badai/left0.tim iso/badai/left1.tim iso/badai/down0.tim iso/badai/down1.tim iso/badai/up0.tim iso/badai/up1.tim iso/badai/right0.tim iso/badai/right1.tim
 
+# Sugar Rush Bandu
+iso/sugar/main.arc: iso/sugar/idle0.tim iso/sugar/idle1.tim iso/sugar/idle2.tim iso/sugar/idle3.tim iso/sugar/lefta0.tim iso/sugar/lefta1.tim iso/sugar/leftb0.tim iso/sugar/leftb1.tim iso/sugar/downa0.tim iso/sugar/downa1.tim iso/sugar/downb0.tim iso/sugar/downb1.tim iso/sugar/upa0.tim iso/sugar/upa1.tim iso/sugar/upb0.tim iso/sugar/upb1.tim iso/sugar/righta0.tim iso/sugar/righta1.tim iso/sugar/rightb0.tim iso/sugar/rightb1.tim
+
+# Origin Bandu
+iso/origin/main.arc: iso/origin/idle0.tim iso/origin/idle1.tim iso/origin/idle2.tim iso/origin/idle3.tim iso/origin/left0.tim iso/origin/left1.tim iso/origin/down0.tim iso/origin/down1.tim iso/origin/up0.tim iso/origin/up1.tim iso/origin/right0.tim iso/origin/right1.tim iso/origin/ugh0.tim iso/origin/ugh1.tim iso/origin/ugh2.tim iso/origin/ugh3.tim
+
+# Ringi
+iso/ringi/main.arc: iso/ringi/idle0.tim iso/ringi/idle1.tim iso/ringi/idle2.tim iso/ringi/idle3.tim iso/ringi/idle4.tim iso/ringi/idle5.tim iso/ringi/left0.tim iso/ringi/left1.tim iso/ringi/down0.tim iso/ringi/down1.tim iso/ringi/up0.tim iso/ringi/up1.tim iso/ringi/right0.tim iso/ringi/right1.tim
+
+# BamBom
+iso/bambom/main.arc: iso/bambom/idle0.tim iso/bambom/idle1.tim iso/bambom/idle2.tim iso/bambom/idle3.tim iso/bambom/idle4.tim iso/bambom/idle5.tim iso/bambom/left0.tim iso/bambom/left1.tim iso/bambom/down0.tim iso/bambom/down1.tim iso/bambom/up0.tim iso/bambom/up1.tim iso/bambom/right0.tim iso/bambom/right1.tim
+
+# Bendu
+iso/bendu/main.arc: iso/bendu/idle0.tim iso/bendu/idle1.tim iso/bendu/idle2.tim iso/bendu/idle3.tim iso/bendu/idle4.tim iso/bendu/left0.tim iso/bendu/left1.tim iso/bendu/down0.tim iso/bendu/down1.tim iso/bendu/up0.tim iso/bendu/up1.tim iso/bendu/right0.tim iso/bendu/right1.tim
+
+# Cycles Sart Producer
+iso/cycles/main.arc: iso/cycles/idle0.tim iso/cycles/idle1.tim iso/cycles/idle2.tim iso/cycles/idle3.tim iso/cycles/idle4.tim iso/cycles/left0.tim iso/cycles/left1.tim iso/cycles/down0.tim iso/cycles/down1.tim iso/cycles/up0.tim iso/cycles/up1.tim iso/cycles/right0.tim iso/cycles/right1.tim
+
 # GF
 iso/gf/main.arc: iso/gf/gf0.tim iso/gf/gf1.tim iso/gf/gf2.tim
 iso/gf/tut.arc: iso/gf/tut0.tim iso/gf/tut1.tim
@@ -99,13 +126,13 @@ iso/week2/back.arc: iso/week2/back0.tim iso/week2/back1.tim iso/week2/back2.tim 
 iso/week2/hench.arc: iso/week2/hench0.tim iso/week2/hench1.tim
 
 # Week 3
-iso/week3/back.arc: iso/week3/back0.tim
+iso/week3/back.arc: iso/week3/back0.tim iso/week3/back1.tim iso/week3/back2.tim
 
 # Week 4
-iso/week4/back.arc: iso/week4/back0.tim
+iso/week4/back.arc: iso/week4/back0.tim iso/week4/back1.tim iso/week4/back2.tim
 
 # Week 5
-iso/week5/back.arc: iso/week5/back0.tim iso/week5/back1.tim iso/week5/back2.tim iso/week5/back3.tim iso/week5/back4.tim iso/week5/back5.tim
+iso/week5/back.arc: iso/week5/back0.tim
 
 # Week6
 iso/week6/back.arc: iso/week6/back0.tim iso/week6/back1.tim iso/week6/back2.tim
@@ -115,3 +142,6 @@ iso/week7/back.arc: iso/week7/back0.tim iso/week7/back1.tim iso/week7/back2.tim 
 
 # Week 8
 iso/week8/back.arc: iso/week8/back0.tim
+
+# Week 8
+iso/week9/back.arc: iso/week9/back0.tim

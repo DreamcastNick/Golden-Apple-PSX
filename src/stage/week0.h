@@ -9,6 +9,18 @@
 
 #include "../stage.h"
 
+//Week 0 background structure
+typedef struct
+{
+	//Stage background base structure
+	StageBack back;
+	
+	//Textures
+	Gfx_Tex tex_back0; //Background
+	Gfx_Tex tex_back1; //Background 2
+	Gfx_Tex tex_back2; //Background 3
+} Back_Week0;
+
 //Week 0 functions
 StageBack *Back_Week0_New();
 

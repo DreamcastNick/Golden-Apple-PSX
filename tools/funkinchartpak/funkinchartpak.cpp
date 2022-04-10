@@ -33,7 +33,7 @@ struct Section
 struct Note
 {
 	uint16_t pos; //1/12 steps
-	uint8_t type, pad = 0;
+	uint16_t type, pad = 0;
 };
 
 int PosRound(double pos, double crochet)
@@ -127,6 +127,8 @@ int main(int argc, char *argv[])
 				new_note.type |= NOTE_FLAG_SUSTAIN_END;
 			if (j[3] == "Bambi Sing")
 				new_note.type |= NOTE_FLAG_OPPONENT2;
+			if (j[3] == "Alt Animation")
+				new_note.type |= NOTE_FLAG_ALT_ANIM;
 			
 			if (note_fudge.count(*((uint32_t*)&new_note)))
 			{

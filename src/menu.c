@@ -27,42 +27,42 @@
 
 //Menu messages
 static const char *funny_messages[][2] = {
-	{"PSX PORT BY CUCKYDEV", "YOU KNOW IT"},
+	{"PSX PORT BY DREAMCASTNICK", "YOU KNOW IT"},
 	{"PORTED BY CUCKYDEV", "WHAT YOU GONNA DO"},
 	{"FUNKIN", "FOREVER"},
-	{"WHAT THE HELL", "RITZ PSX"},
-	{"LIKE PARAPPA", "BUT COOLER"},
-	{"THE JAPI", "EL JAPI"},
+	{"WHAT THE HELL", "BROBGONAL PSX"},
+	{"LIKE LAMMY", "BUT COOLER"},
+	{"GOLDEN", "APPLE"},
 	{"PICO FUNNY", "PICO FUNNY"},
-	{"OPENGL BACKEND", "BY CLOWNACY"},
-	{"CUCKYFNF", "SETTING STANDARDS"},
-	{"lool", "inverted colours"},
-	{"NEVER LOOK AT", "THE ISSUE TRACKER"},
+	{"BALDI DIES THREE", "COMING SOON"},
+	{"DCNICK", "SETTING STANDARDS"},
+	{"IT WAS", "DOODOO FECES"},
+	{"NEVER LOOK AT THE ORIGIN", "OF GARRETS MOTIF IN ALGEBRA"},
 	{"PSXDEV", "HOMEBREW"},
-	{"ZERO POINT ZERO TWO TWO EIGHT", "ONE FIVE NINE ONE ZERO FIVE"},
+	{"THE REAL APPLECORE MOD", "YOU KNOW IT"},
 	{"DOPE ASS GAME", "PLAYSTATION MAGAZINE"},
-	{"NEWGROUNDS", "FOREVER"},
-	{"NO FPU", "NO PROBLEM"},
-	{"OK OKAY", "WATCH THIS"},
-	{"ITS MORE MALICIOUS", "THAN ANYTHING"},
+	{"UNSTOPABLE", "FOREVER"},
+	{"DAVE X BAMBI", "STINKY"},
+	{"JOUL", "BIGGEST SUPPORTER"},
+	{"BANDU IS A TRANS MAN", "DEAL WITH IT"},
 	{"USE A CONTROLLER", "LOL"},
 	{"SNIPING THE KICKSTARTER", "HAHA"},
-	{"SHITS UNOFFICIAL", "NOT A PROBLEM"},
-	{"SYSCLK", "RANDOM SEED"},
-	{"THEY DIDNT HIT THE GOAL", "STOP"},
-	{"FCEFUWEFUETWHCFUEZDSLVNSP", "PQRYQWENQWKBVZLZSLDNSVPBM"},
-	{"THE FLOORS ARE", "THREE DIMENSIONAL"},
-	{"PSXFUNKIN BY CUCKYDEV", "SUCK IT DOWN"},
+	{"BALDI", "SEX"},
+	{"BIG BIG CHUNGUS", "BIG CHUNGUS BIG CHUNGUS"},
+	{"SUPER MARIO", "IN REAL LIFE"},
+	{"SPAGETTI", "SPAGETTI"},
+	{"THE SKY IS FALLING", "THE SKY IS FALLING"},
+	{"PSXFUNKIN BY CUCKYDEV", "EAT IT LOSER"},
 	{"PLAYING ON EPSXE HUH", "YOURE THE PROBLEM"},
-	{"NEXT IN LINE", "ATARI"},
-	{"HAXEFLIXEL", "COME ON"},
+	{"NEXT IN LINE", "ATARI JAGUAR CD"},
+	{"I MADE THIS PORT ON THE TOILET", "PROBLEM"},
 	{"HAHAHA", "I DONT CARE"},
-	{"GET ME TO STOP", "TRY"},
+	{"EAT SHIT", "DUMB CUNT"},
 	{"FNF MUKBANG GIF", "THATS UNRULY"},
 	{"OPEN SOURCE", "FOREVER"},
-	{"ITS A PORT", "ITS WORSE"},
+	{"ITS A PORT", "ITS SOMEWHAT ACCURATE"},
 	{"WOW GATO", "WOW GATO"},
-	{"BALLS FISH", "BALLS FISH"},
+	{"POGGERT FESH", "POGGERT FESH"},
 };
 
 #ifdef PSXF_NETWORK
@@ -375,7 +375,7 @@ void Menu_Load(MenuPage page)
 	FontData_Load(&menu.font_bold, Font_Bold);
 	FontData_Load(&menu.font_arial, Font_Arial);
 	
-	menu.gf = Char_Title_New(FIXED_DEC(-102,1), FIXED_DEC(-12,1));
+	menu.gf = Char_Title_New(FIXED_DEC(-102,1), FIXED_DEC(12,1));
 	stage.camera.x = stage.camera.y = FIXED_DEC(0,1);
 	stage.camera.bzoom = FIXED_UNIT;
 	stage.gf_speed = 4;
@@ -478,18 +478,19 @@ void Menu_Tick(void)
 				switch (beat)
 				{
 					case 3:
-						menu.font_bold.draw(&menu.font_bold, "PRESENT", SCREEN_WIDTH2, SCREEN_HEIGHT2 + 32, FontAlign_Center);
+						menu.font_bold.draw(&menu.font_bold, "PRESENT", SCREEN_WIDTH2, SCREEN_HEIGHT2 + 48, FontAlign_Center);
 				//Fallthrough
 					case 2:
 					case 1:
-						menu.font_bold.draw(&menu.font_bold, "NINJAMUFFIN",   SCREEN_WIDTH2, SCREEN_HEIGHT2 - 32, FontAlign_Center);
-						menu.font_bold.draw(&menu.font_bold, "PHANTOMARCADE", SCREEN_WIDTH2, SCREEN_HEIGHT2 - 16, FontAlign_Center);
-						menu.font_bold.draw(&menu.font_bold, "KAWAISPRITE",   SCREEN_WIDTH2, SCREEN_HEIGHT2,      FontAlign_Center);
-						menu.font_bold.draw(&menu.font_bold, "EVILSKER",      SCREEN_WIDTH2, SCREEN_HEIGHT2 + 16, FontAlign_Center);
+						menu.font_bold.draw(&menu.font_bold, "GRANTARE",   SCREEN_WIDTH2, SCREEN_HEIGHT2 - 32, FontAlign_Center);
+						menu.font_bold.draw(&menu.font_bold, "LANCEY", SCREEN_WIDTH2, SCREEN_HEIGHT2 - 16, FontAlign_Center);
+						menu.font_bold.draw(&menu.font_bold, "RUBYSART",   SCREEN_WIDTH2, SCREEN_HEIGHT2,      FontAlign_Center);
+						menu.font_bold.draw(&menu.font_bold, "CYNDAQUILDAC",      SCREEN_WIDTH2, SCREEN_HEIGHT2 + 16, FontAlign_Center);
+						menu.font_bold.draw(&menu.font_bold, "BEZIEANIMS",      SCREEN_WIDTH2, SCREEN_HEIGHT2 + 32, FontAlign_Center);
 						break;
 					
 					case 7:
-						menu.font_bold.draw(&menu.font_bold, "NEWGROUNDS",    SCREEN_WIDTH2, SCREEN_HEIGHT2 - 32, FontAlign_Center);
+						menu.font_bold.draw(&menu.font_bold, "THAT GUY",    SCREEN_WIDTH2, SCREEN_HEIGHT2 - 32, FontAlign_Center);
 						Gfx_BlitTex(&menu.tex_ng, &src_ng, (SCREEN_WIDTH - 128) >> 1, SCREEN_HEIGHT2 - 16);
 				//Fallthrough
 					case 6:
@@ -507,13 +508,13 @@ void Menu_Tick(void)
 						break;
 					
 					case 15:
-						menu.font_bold.draw(&menu.font_bold, "FUNKIN", SCREEN_WIDTH2, SCREEN_HEIGHT2 + 8, FontAlign_Center);
+						menu.font_bold.draw(&menu.font_bold, "PSX", SCREEN_WIDTH2, SCREEN_HEIGHT2 + 8, FontAlign_Center);
 				//Fallthrough
 					case 14:
-						menu.font_bold.draw(&menu.font_bold, "NIGHT", SCREEN_WIDTH2, SCREEN_HEIGHT2 - 8, FontAlign_Center);
+						menu.font_bold.draw(&menu.font_bold, "GOLDEN APPLE", SCREEN_WIDTH2, SCREEN_HEIGHT2 - 8, FontAlign_Center);
 				//Fallthrough
 					case 13:
-						menu.font_bold.draw(&menu.font_bold, "FRIDAY", SCREEN_WIDTH2, SCREEN_HEIGHT2 - 24, FontAlign_Center);
+						menu.font_bold.draw(&menu.font_bold, "DAVE AND BAMBI", SCREEN_WIDTH2, SCREEN_HEIGHT2 - 24, FontAlign_Center);
 						break;
 				}
 				break;
@@ -758,11 +759,11 @@ void Menu_Tick(void)
 				{StageId_3_2, 0xFF00A012, "KEYBOARD", false},
 				{StageId_3_3, 0xFF00A012, "UGH", false},
 				{StageId_4_1, 0xFF00A012, "CYCLES", false},
-				{StageId_4_2, 0xFF4059E1, "THUNDERSTORM", false},
-				{StageId_4_3, 0xFF4059E1, "WHEELS", false},
-				{StageId_4_4, 0xFF4059E1, "DAVE X BAMBI SHIPPING CUTE", false},
-				{StageId_5_1, 0xFF4059E1, "RECOVERED PROJECT", false},
-				{StageId_5_2, 0xFF000000, "SART PRODUCER", false},
+				//{StageId_4_2, 0xFF4059E1, "THUNDERSTORM", false},
+				//{StageId_4_3, 0xFF4059E1, "WHEELS", false},
+				//{StageId_4_4, 0xFF4059E1, "DAVE X BAMBI SHIPPING CUTE", false},
+				//{StageId_5_1, 0xFF4059E1, "RECOVERED PROJECT", false},
+				//{StageId_5_2, 0xFF000000, "SART PRODUCER", false},
 				{StageId_5_3, 0xFF00A012, "OLD STRAWBERRY", false},
 			};
 			

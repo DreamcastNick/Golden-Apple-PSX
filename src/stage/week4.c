@@ -20,6 +20,8 @@ typedef struct
 	
 	//Textures
 	Gfx_Tex tex_back0; //Background
+	Gfx_Tex tex_back1; //Background 2
+	Gfx_Tex tex_back2; //Background 3
 } Back_Week4;
 
 //Week 4 background functions
@@ -41,6 +43,28 @@ void Back_Week4_DrawBG(StageBack *back)
 	};
 	
 	Stage_DrawTex(&this->tex_back0, &back_src, &back_dst, stage.camera.bzoom);
+	
+	//Draw background 2
+	RECT backb_src = {0, 0, 256, 256};
+	RECT_FIXED backb_dst = {
+		FIXED_DEC(-275,1) - fx,
+		FIXED_DEC(-200,1) - fy,
+		FIXED_DEC(553,1),
+		FIXED_DEC(367,1)
+	};
+	
+	Stage_DrawTex(&this->tex_back1, &backb_src, &backb_dst, stage.camera.bzoom);
+
+	//Draw background 3
+	RECT backc_src = {0, 0, 256, 256};
+	RECT_FIXED backc_dst = {
+		FIXED_DEC(-275,1) - fx,
+		FIXED_DEC(-200,1) - fy,
+		FIXED_DEC(553,1),
+		FIXED_DEC(367,1)
+	};
+	
+	Stage_DrawTex(&this->tex_back2, &backc_src, &backc_dst, stage.camera.bzoom);
 }
 
 static fixed_t week4_back_paraly[] = {
@@ -102,7 +126,14 @@ void Back_Week4_DrawBG3(StageBack *back)
 		for (int x = 0; x < 8; x++)
 		{
 			//Draw quad and increment source rect
+			if (stage.stage_id == StageId_1_3)
 			Stage_DrawTexArb(&this->tex_back0, &back_src, &back_dst[y][x], &back_dst[y][x + 1], &back_dst[y + 1][x], &back_dst[y + 1][x + 1], stage.camera.bzoom);
+			if (stage.stage_id == StageId_3_1)
+			Stage_DrawTexArb(&this->tex_back1, &back_src, &back_dst[y][x], &back_dst[y][x + 1], &back_dst[y + 1][x], &back_dst[y + 1][x + 1], stage.camera.bzoom);
+			if (stage.stage_id == StageId_3_2)
+			Stage_DrawTexArb(&this->tex_back2, &back_src, &back_dst[y][x], &back_dst[y][x + 1], &back_dst[y + 1][x], &back_dst[y + 1][x + 1], stage.camera.bzoom);
+			if (stage.stage_id == StageId_5_3)
+			Stage_DrawTexArb(&this->tex_back1, &back_src, &back_dst[y][x], &back_dst[y][x + 1], &back_dst[y + 1][x], &back_dst[y + 1][x + 1], stage.camera.bzoom);
 			if ((back_src.x += 32) >= 0xE0)
 			if ((back_src.y += 32) >= 0xE0)
 				back_src.w--;
@@ -134,6 +165,8 @@ StageBack *Back_Week4_New(void)
 	//Load background textures
 	IO_Data arc_back = IO_Read("\\WEEK4\\BACK.ARC;1");
 	Gfx_LoadTex(&this->tex_back0, Archive_Find(arc_back, "back0.tim"), 0);
+	Gfx_LoadTex(&this->tex_back1, Archive_Find(arc_back, "back1.tim"), 0);
+	Gfx_LoadTex(&this->tex_back2, Archive_Find(arc_back, "back2.tim"), 0);
 	Mem_Free(arc_back);
 	
 	return (StageBack*)this;

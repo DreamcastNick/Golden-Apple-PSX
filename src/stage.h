@@ -19,12 +19,10 @@
 #include "network.h"
 
 //Stage constants
-#define STAGE_PERFECT //Play all notes perfectly
-
-#define INPUT_LEFT  (PAD_LEFT  | PAD_SQUARE)
-#define INPUT_DOWN  (PAD_DOWN  | PAD_CROSS)
-#define INPUT_UP    (PAD_UP    | PAD_TRIANGLE)
-#define INPUT_RIGHT (PAD_RIGHT | PAD_CIRCLE)
+#define INPUT_LEFT  (PAD_LEFT  | PAD_SQUARE | PAD_L2)
+#define INPUT_DOWN  (PAD_DOWN  | PAD_CROSS | PAD_L1)
+#define INPUT_UP    (PAD_UP    | PAD_TRIANGLE | PAD_R1)
+#define INPUT_RIGHT (PAD_RIGHT | PAD_CIRCLE | PAD_R2)
 
 #define STAGE_FLAG_JUST_STEP     (1 << 0) //Song just stepped this frame
 #define STAGE_FLAG_VOCAL_ACTIVE  (1 << 1) //Song's vocal track is currently active
@@ -181,8 +179,18 @@ typedef struct
 	u16 combo;
 	
 	boolean refresh_score;
-	u32 score, max_score;
-	char score_text[36];
+	s32 score, max_score;
+	char score_text[13];
+
+	boolean refresh_miss;
+	s32 miss;
+	char miss_text[13];
+	
+	boolean refresh_accuracy;
+	s32 min_accuracy;
+	s32 accuracy;
+	s32 max_accuracy;
+	char accuracy_text[13];
 	
 	u16 pad_held, pad_press;
 } PlayerState;
@@ -190,7 +198,7 @@ typedef struct
 typedef struct
 {
 	//Stage settings
-	boolean ghost, downscroll, expsync;
+	boolean ghost, downscroll, middlescroll, expsync;
 	s32 mode;
 	
 	u32 offset;
@@ -245,6 +253,9 @@ typedef struct
 	fixed_t time_base;
 	u16 step_base;
 	Section *section_base;
+	
+	s16 noteshakex;
+	s16 noteshakey;
 	
 	s32 song_step;
 	

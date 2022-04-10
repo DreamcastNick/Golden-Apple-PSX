@@ -12,6 +12,8 @@
 #include "../random.h"
 #include "../main.h"
 
+int secret2;
+
 //Boyfriend skull fragments
 static SkullFragment char_tdbf_skull[15] = {
 	{ 1 * 8, -87 * 8, -13, -13},
@@ -173,6 +175,17 @@ void Char_TDBF_Tick(Character *character)
 {
 	Char_TDBF *this = (Char_TDBF*)character;
 	
+	//Secret icon
+	if (secret2)
+		this->character.health_i = 22;
+	else
+		this->character.health_i = 0;
+
+	if (pad_state.press & PAD_SELECT)
+		secret2 ++;
+	
+	if (secret2 == 2)
+		secret2 = 0;
 	//Handle animation updates
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
 	    (character->animatable.anim != CharAnim_Left &&
@@ -381,8 +394,6 @@ Character *Char_TDBF_New(fixed_t x, fixed_t y)
 	
 	//Set character information
 	this->character.spec = CHAR_SPEC_MISSANIM;
-	
-	this->character.health_i = 0;
 	
 	this->character.focus_x = FIXED_DEC(-92,1);
 	this->character.focus_y = FIXED_DEC(-120,1);

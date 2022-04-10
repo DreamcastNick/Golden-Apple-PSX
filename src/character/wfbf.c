@@ -12,6 +12,8 @@
 #include "../random.h"
 #include "../main.h"
 
+int secret3;
+
 //Boyfriend skull fragments
 static SkullFragment char_wfbf_skull[15] = {
 	{ 1 * 8, -87 * 8, -13, -13},
@@ -185,6 +187,17 @@ void Char_WFBF_Tick(Character *character)
 {
 	Char_WFBF *this = (Char_WFBF*)character;
 	
+	//Secret icon
+	if (secret3)
+		this->character.health_i = 22;
+	else
+		this->character.health_i = 0;
+
+	if (pad_state.press & PAD_SELECT)
+		secret3 ++;
+	
+	if (secret3 == 2)
+		secret3 = 0;
 	//Handle animation updates
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
 	    (character->animatable.anim != CharAnim_Left &&
@@ -393,8 +406,6 @@ Character *Char_WFBF_New(fixed_t x, fixed_t y)
 	
 	//Set character information
 	this->character.spec = CHAR_SPEC_MISSANIM;
-	
-	this->character.health_i = 0;
 	
 	this->character.focus_x = FIXED_DEC(-50,1);
 	this->character.focus_y = FIXED_DEC(-45,1);
