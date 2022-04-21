@@ -76,12 +76,12 @@ int main(int argc, char *argv[])
 	std::cout << argv[1] << " speed: " << speed << " ini bpm: " << bpm << " step_crochet: " << step_crochet << std::endl;
 	
 	double milli_base = 0;
-	uint16_t step_base = 0;
+	int step_base = 0;
 	
 	std::vector<Section> sections;
 	std::vector<Note> notes;
 	
-	uint16_t section_end = 0;
+	int section_end = 0;
 	int score = 0, dups = 0;
 	std::unordered_set<uint32_t> note_fudge;
 	for (auto &i : song_info["notes"]) //Iterate through sections
