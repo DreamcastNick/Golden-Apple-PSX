@@ -1,6 +1,9 @@
 	{ //StageId_1_1 (Bopeebo)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_Disrupt_New,  FIXED_DEC(-128,1),   FIXED_DEC(-10,1)},
 		{NULL},
 		{NULL},
@@ -21,6 +24,9 @@
 	{ //StageId_1_2 (Fresh)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_Unfair_New,  FIXED_DEC(-128,1),   FIXED_DEC(-220,1)},
 		{Char_Bandu_New,  FIXED_DEC(-128,1),   FIXED_DEC(-10,1)},
 		{Char_Disrupt_New,  FIXED_DEC(-196,1),   FIXED_DEC(-56,1)},
@@ -41,6 +47,9 @@
 	{ //StageId_1_3 (Dadbattle)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_Cripple_New,  FIXED_DEC(-100,1),   FIXED_DEC(32,1)},
 		{NULL},
 		{NULL},
@@ -61,6 +70,9 @@
 	{ //StageId_1_4 (Tutorial)
 		//Characters
 		{Char_WFBF_New, FIXED_DEC(60,1),  FIXED_DEC(10,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_WFDave_New,  FIXED_DEC(-120,1),   FIXED_DEC(10,1)},
 		{Char_Badai_New,  FIXED_DEC(-120,1),   FIXED_DEC(10,1)},
 		{NULL},
@@ -82,6 +94,9 @@
 	{ //StageId_2_1 (Spookeez)
 		//Characters
 		{Char_TDBF_New,      FIXED_DEC(136,1),   FIXED_DEC(112,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_OGDave_New,  FIXED_DEC(-220,1),   FIXED_DEC(-164,1)},
 		{Char_Garett_New,  FIXED_DEC(-290,1),   FIXED_DEC(-180,1)},
 		{Char_DiaMan_New,  FIXED_DEC(-180,1),   FIXED_DEC(-172,1)},
@@ -102,6 +117,9 @@
 	{ //StageId_2_2 (South)
 		//Characters
 		{Char_BF_New,      FIXED_DEC(40,1),   FIXED_DEC(45,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_Sugar_New,  FIXED_DEC(-140,1),   FIXED_DEC(-38,1)},
 		{NULL},
 		{NULL},
@@ -122,6 +140,9 @@
 	{ //StageId_2_3 (Monster)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_Origin_New,  FIXED_DEC(-156,1),   FIXED_DEC(-10,1)},
 		{NULL},
 		{NULL},
@@ -142,6 +163,9 @@
 	{ //StageId_2_4 (Clucked)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_Ringi_New,  FIXED_DEC(-132,1),   FIXED_DEC(24,1)},
 		{NULL},
 		{NULL},
@@ -163,6 +187,9 @@
 	{ //StageId_3_1 (Pico)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_BamBom_New,  FIXED_DEC(-132,1),   FIXED_DEC(24,1)},
 		{NULL},
 		{NULL},
@@ -183,6 +210,9 @@
 	{ //StageId_3_2 (Philly)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_Bendu_New,  FIXED_DEC(-132,1),   FIXED_DEC(24,1)},
 		{NULL},
 		{NULL},
@@ -203,6 +233,9 @@
 	{ //StageId_3_3 (Blammed)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_Origin_New,  FIXED_DEC(-156,1),   FIXED_DEC(-10,1)},
 		{NULL},
 		{NULL},
@@ -224,6 +257,9 @@
 	{ //StageId_4_1 (Satin Panties)
 		//Characters
 		{Char_NTBandu_New,    FIXED_DEC(-200,1),  FIXED_DEC(100,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_Cycles_New,  FIXED_DEC(108,1),   FIXED_DEC(60,1)},
 		{NULL},
 		{NULL},
@@ -244,6 +280,9 @@
 	{ //StageId_4_2 (High)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
 		{NULL},
 		{NULL},
@@ -264,6 +303,9 @@
 	{ //StageId_4_3 (MILF)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
 		{NULL},
 		{NULL},
@@ -284,6 +326,9 @@
 	{ //StageId_4_4 (Test)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
 		{NULL},
 		{NULL},
@@ -305,6 +350,9 @@
 	{ //StageId_5_1 (Cocoa)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
 		{NULL},
 		{NULL},
@@ -325,6 +373,9 @@
 	{ //StageId_5_2 (Eggnog)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
 		{NULL},
 		{NULL},
@@ -345,6 +396,9 @@
 	{ //StageId_5_3 (Winter Horrorland)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{NULL},
+		{NULL},
+		{NULL},
 		{Char_BamBom_New,  FIXED_DEC(-132,1),   FIXED_DEC(24,1)},
 		{NULL},
 		{NULL},

@@ -28,8 +28,10 @@ all: \
 	iso/bambom/main.arc \
 	iso/bendu/main.arc \
 	iso/cycles/main.arc \
+	iso/pooper/main.arc \
 	iso/gf/main.arc \
 	iso/gf/tut.arc \
+	iso/gf/best.arc \
 	iso/gf/speaker.tim \
 	iso/week0/back.arc \
 	iso/week1/back.arc \
@@ -111,9 +113,13 @@ iso/bendu/main.arc: iso/bendu/idle0.tim iso/bendu/idle1.tim iso/bendu/idle2.tim 
 # Cycles Sart Producer
 iso/cycles/main.arc: iso/cycles/idle0.tim iso/cycles/idle1.tim iso/cycles/idle2.tim iso/cycles/idle3.tim iso/cycles/idle4.tim iso/cycles/left0.tim iso/cycles/left1.tim iso/cycles/down0.tim iso/cycles/down1.tim iso/cycles/up0.tim iso/cycles/up1.tim iso/cycles/right0.tim iso/cycles/right1.tim
 
+# Dave But Awesome
+iso/pooper/main.arc: iso/pooper/idle0.tim iso/pooper/idle1.tim iso/pooper/idle2.tim iso/pooper/idle3.tim iso/pooper/idle4.tim iso/pooper/left0.tim iso/pooper/left1.tim iso/pooper/down0.tim iso/pooper/down1.tim iso/pooper/up0.tim iso/pooper/up1.tim iso/pooper/right0.tim iso/pooper/right1.tim
+
 # GF
 iso/gf/main.arc: iso/gf/gf0.tim iso/gf/gf1.tim iso/gf/gf2.tim
 iso/gf/tut.arc: iso/gf/tut0.tim iso/gf/tut1.tim
+iso/gf/best.arc: iso/gf/bestgf0.tim
 
 # Week 0
 iso/week0/back.arc: iso/week0/back0.tim iso/week0/back1.tim iso/week0/back2.tim

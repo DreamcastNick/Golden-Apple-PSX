@@ -29,14 +29,17 @@
 #define STAGE_FLAG_SCORE_REFRESH (1 << 2) //Score text should be refreshed
 
 #define STAGE_LOAD_PLAYER      (1 << 0) //Reload player character
-#define STAGE_LOAD_OPPONENT    (1 << 1) //Reload opponent character
-#define STAGE_LOAD_OPPONENT2   (1 << 2) //Reload opponent 2 character
-#define STAGE_LOAD_OPPONENT3   (1 << 3) //Reload opponent 3 character
-#define STAGE_LOAD_OPPONENT4   (1 << 4) //Reload opponent 4 character
-#define STAGE_LOAD_GIRLFRIEND  (1 << 5) //Reload girlfriend character
-#define STAGE_LOAD_GIRLFRIEND2 (1 << 6) //Reload girlfriend 2 character
-#define STAGE_LOAD_STAGE       (1 << 7) //Reload stage
-#define STAGE_LOAD_FLAG        (1 << 8)
+#define STAGE_LOAD_PLAYER2     (1 << 1) //Reload player2 character
+#define STAGE_LOAD_PLAYER3     (1 << 2) //Reload player3 character
+#define STAGE_LOAD_PLAYER4     (1 << 3) //Reload player4 character
+#define STAGE_LOAD_OPPONENT    (1 << 4) //Reload opponent character
+#define STAGE_LOAD_OPPONENT2   (1 << 5) //Reload opponent 2 character
+#define STAGE_LOAD_OPPONENT3   (1 << 6) //Reload opponent 3 character
+#define STAGE_LOAD_OPPONENT4   (1 << 7) //Reload opponent 4 character
+#define STAGE_LOAD_GIRLFRIEND  (1 << 8) //Reload girlfriend character
+#define STAGE_LOAD_GIRLFRIEND2 (1 << 9) //Reload girlfriend 2 character
+#define STAGE_LOAD_STAGE       (1 << 10) //Reload stage
+#define STAGE_LOAD_FLAG        (1 << 11)
 
 //Stage enums
 typedef enum
@@ -130,7 +133,7 @@ typedef struct
 	{
 		Character* (*new)();
 		fixed_t x, y;
-	} pchar, ochar, ochar2, ochar3, gchar, gchar2, ochar4;
+	} pchar, pchar2, pchar3, pchar4, ochar, ochar2, ochar3, gchar, gchar2, ochar4;
 	
 	//Stage background
 	StageBack* (*back)();
@@ -236,6 +239,9 @@ typedef struct
 	StageBack *back;
 	
 	Character *player;
+	Character *player2;
+	Character *player3;
+	Character *player4;
 	Character *opponent;
 	Character *opponent2;
 	Character *opponent3;
