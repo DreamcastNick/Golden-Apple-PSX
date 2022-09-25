@@ -38,6 +38,11 @@
 				<file name = "hud0.tim" type = "data" source = "iso/stage/hud0.tim"/>
 				<file name = "hud1.tim" type = "data" source = "iso/stage/hud1.tim"/>
 				<file name = "hud0weeb.tim" type = "data" source = "iso/stage/hud0weeb.tim"/>
+				<file name = "dialog0.tim" type = "data" source = "iso/stage/dialog0.tim"/>
+				<file name = "dialog1.tim" type = "data" source = "iso/stage/dialog1.tim"/>
+				<file name = "dialog2.tim" type = "data" source = "iso/stage/dialog2.tim"/>
+				<file name = "dialog3.tim" type = "data" source = "iso/stage/dialog3.tim"/>
+				<file name = "dialog4.tim" type = "data" source = "iso/stage/dialog4.tim"/>
 			</dir>
 			
 			<!-- Week 0 assets -->
@@ -154,46 +159,6 @@
 				<file name = "5.3h.cht" type = "data" source = "iso/chart/winter-horrorland-hard.json.cht"/>
 			</dir>
 			
-			<!-- Week 6 assets -->
-			<dir name = "week6">
-				<!-- Background art -->
-				<file name = "back.arc" type = "data" source = "iso/week6/back.arc"/>
-				<file name = "back3.tim" type = "data" source = "iso/week6/back3.tim"/>
-				
-				<!-- Senpai charts -->
-				<file name = "6.1e.cht" type = "data" source = "iso/chart/senpai-easy.json.cht"/>
-				<file name = "6.1n.cht" type = "data" source = "iso/chart/senpai.json.cht"/>
-				<file name = "6.1h.cht" type = "data" source = "iso/chart/senpai-hard.json.cht"/>
-				<!-- Roses charts -->
-				<file name = "6.2e.cht" type = "data" source = "iso/chart/roses-easy.json.cht"/>
-				<file name = "6.2n.cht" type = "data" source = "iso/chart/roses.json.cht"/>
-				<file name = "6.2h.cht" type = "data" source = "iso/chart/roses-hard.json.cht"/>
-				<!-- Thorns charts -->
-				<file name = "6.3e.cht" type = "data" source = "iso/chart/thorns-easy.json.cht"/>
-				<file name = "6.3n.cht" type = "data" source = "iso/chart/thorns.json.cht"/>
-				<file name = "6.3h.cht" type = "data" source = "iso/chart/thorns-hard.json.cht"/>
-			</dir>
-			
-			<!-- Week 7 assets -->
-			<dir name = "week7">
-				<!-- Background art -->
-				<file name = "back.arc" type = "data" source = "iso/week7/back.arc"/>
-				
-				<!-- Ugh charts -->
-				<file name = "7.1e.cht" type = "data" source = "iso/chart/ugh-easy.json.cht"/>
-				<file name = "7.1n.cht" type = "data" source = "iso/chart/ugh.json.cht"/>
-				<file name = "7.1h.cht" type = "data" source = "iso/chart/ugh-hard.json.cht"/>
-				<!-- Guns charts -->
-				<file name = "7.2e.cht" type = "data" source = "iso/chart/guns-easy.json.cht"/>
-				<file name = "7.2n.cht" type = "data" source = "iso/chart/guns.json.cht"/>
-				<file name = "7.2h.cht" type = "data" source = "iso/chart/guns-hard.json.cht"/>
-				<!-- Stress charts -->
-				<file name = "7.3e.cht" type = "data" source = "iso/chart/stress-easy.json.cht"/>
-				<file name = "7.3n.cht" type = "data" source = "iso/chart/stress.json.cht"/>
-				<file name = "7.3h.cht" type = "data" source = "iso/chart/stress-hard.json.cht"/>
-				<file name = "7.3p.cht" type = "data" source = "iso/week7/picospeaker.json.cht"/>
-			</dir>
-			
 			<!-- Week 8 assets -->
 			<dir name = "week8">
 				<!-- Background art -->
@@ -216,6 +181,7 @@
 				<file name = "3dbf.arc" type = "data" source = "iso/bf/3d.arc"/>
 				<file name = "wfbf.arc" type = "data" source = "iso/bf/wf.arc"/>
 				<file name = "nt.arc" type = "data" source = "iso/bf/nt.arc"/>
+				<file name = "dave.arc" type = "data" source = "iso/bf/dave.arc"/>
 				<file name = "bfdead.arc" type = "data" source = "iso/bf/dead.arc"/>
 				
 				<!-- OGDave assets -->
@@ -265,10 +231,20 @@
 				
 				<!-- Sart Producer Cycles assets -->
 				<file name = "cycles.arc" type = "data" source = "iso/cycles/main.arc"/>
+
+				<!-- Dave But Awesome assets -->
+				<file name = "pooper.arc" type = "data" source = "iso/pooper/main.arc"/>
+				
+				<!-- Dave PNG assets -->
+				<file name = "png.arc" type = "data" source = "iso/png/main.arc"/>
+				
+				<!-- Bambi assets -->
+				<file name = "bambi.arc" type = "data" source = "iso/bambi/main.arc"/>
 				
 				<!-- Girlfriend assets -->
 				<file name = "gf.arc" type = "data" source = "iso/gf/main.arc"/>
 				<file name = "gftut.arc" type = "data" source = "iso/gf/tut.arc"/>
+				<file name = "best.arc" type = "data" source = "iso/gf/best.arc"/>
 				<file name = "speaker.tim" type = "data" source = "iso/gf/speaker.tim"/>
 			</dir>
 			
@@ -295,6 +271,8 @@
 				<file name = "week5a.xa" type = "xa" source = "iso/music/week5a.xa"/>
 				<dummy sectors="128"/>
 				<file name = "week5b.xa" type = "xa" source = "iso/music/week5b.xa"/>
+				<dummy sectors="128"/>
+				<file name = "cut.xa" type = "xa" source = "iso/music/cut.xa"/>
 				<dummy sectors="128"/>
 			</dir>
 			

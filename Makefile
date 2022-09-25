@@ -24,8 +24,6 @@ SRCS = src/main.c \
        src/stage/week3.c \
        src/stage/week4.c \
        src/stage/week5.c \
-       src/stage/week6.c \
-       src/stage/week7.c \
        src/stage/week8.c \
        src/stage/week9.c \
        src/animation.c \
@@ -34,6 +32,7 @@ SRCS = src/main.c \
        src/character/bf.c \
        src/character/tdbf.c \
        src/character/wfbf.c \
+	   src/character/dave.c \
        src/character/bandu.c \
        src/character/disrupt.c \
        src/character/unfair.c \
@@ -52,8 +51,12 @@ SRCS = src/main.c \
        src/character/bendu.c \
        src/character/cycles.c \
        src/character/ntbandu.c \
+       src/character/pooper.c \
+       src/character/png.c \
+       src/character/bambi.c \
        src/character/gf.c \
        src/character/gfb.c \
+       src/character/bestgf.c \
        src/object.c \
        src/object/combo.c \
        src/object/splash.c \

@@ -74,6 +74,7 @@ boolean opponentsing;
 #include "character/bf.h"
 #include "character/tdbf.h"
 #include "character/wfbf.h"
+#include "character/dave.h"
 #include "character/ogdave.h"
 #include "character/garett.h"
 #include "character/diaman.h"
@@ -91,18 +92,19 @@ boolean opponentsing;
 #include "character/bendu.h"
 #include "character/cycles.h"
 #include "character/ntbandu.h"
+#include "character/pooper.h"
+#include "character/png.h"
+#include "character/bambi.h"
 #include "character/gf.h"
 #include "character/gfb.h"
+#include "character/bestgf.h"
 
-#include "stage/dummy.h"
 #include "stage/week0.h"
 #include "stage/week1.h"
 #include "stage/week2.h"
 #include "stage/week3.h"
 #include "stage/week4.h"
 #include "stage/week5.h"
-#include "stage/week6.h"
-#include "stage/week7.h"
 #include "stage/week8.h"
 #include "stage/week9.h"
 
@@ -129,6 +131,29 @@ static void Stage_CutVocal(void)
 	{
 		Audio_ChannelXA(stage.stage_def->music_channel + 1);
 		stage.flag &= ~STAGE_FLAG_VOCAL_ACTIVE;
+	}
+}
+
+int disruptx;
+u16 bfx;
+
+static void Dia_MovePort(boolean movemode)
+{
+	if (movemode == 0)
+	{
+		if (disruptx < 32)
+			disruptx += 8;
+
+		if (bfx < 354)
+			bfx += 8;
+	}
+	else
+	{
+		if (disruptx > -102)
+			disruptx -= 8;
+
+		if (bfx > 172)
+			bfx -= 8;
 	}
 }
 
@@ -404,9 +429,6 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			//Hit the mine
 			note->type |= NOTE_FLAG_HIT;
 			
-			if (stage.stage_id == StageId_Clwn_4)
-				this->health = -0x7000;
-			else
 				this->health -= 2000;
 			if (this->character->spec & CHAR_SPEC_MISSANIM)
 				this->character->set_anim(this->character, note_anims[type & 0x3][2]);
@@ -682,38 +704,6 @@ void Stage_DrawTexCol(Gfx_Tex *tex, const RECT *src, const RECT_FIXED *dst, fixe
 		#endif
 	}
 	
-	if (stage.stage_id >= StageId_6_1 && stage.stage_id <= StageId_6_3)
-	{
-		//Handle HUD drawing
-		if (tex == &stage.tex_hud0)
-		{
-			#ifdef STAGE_NOHUD
-				return;
-			#endif
-			if (src->y >= 128 && src->y < 224)
-			{
-				//Pixel perfect scrolling
-				xz &= FIXED_UAND;
-				yz &= FIXED_UAND;
-				wz &= FIXED_UAND;
-				hz &= FIXED_UAND;
-			}
-		}
-		else if (tex == &stage.tex_hud1)
-		{
-			#ifdef STAGE_NOHUD
-				return;
-			#endif
-		}
-		else
-		{
-			//Pixel perfect scrolling
-			xz &= FIXED_UAND;
-			yz &= FIXED_UAND;
-			wz &= FIXED_UAND;
-			hz &= FIXED_UAND;
-		}
-	}
 	else
 	{
 		//Don't draw if HUD and is disabled
@@ -812,6 +802,37 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 	
 	//Draw health icon
 	Stage_DrawTex(&stage.tex_hud1, &src, &dst, FIXED_MUL(stage.bump, stage.sbump));
+}
+
+//Stage HUD functions
+static void Stage_DrawHealthOpponent(s16 health, u8 i, s8 ox)
+{
+	//Check if we should use 'dying' frame
+	s8 dying;
+	if (ox < 0)
+		dying = (health >= 18000) * 24;
+	else
+		dying = (health <= 2000) * 24;
+	
+	//Get src and dst
+	fixed_t hx = (128 << FIXED_SHIFT) * (10000 - health) / 10000;
+	RECT src = {
+		(i % 5) * 48 + dying,
+		16 + (i / 5) * 24,
+		24,
+		24
+	};
+	RECT_FIXED dst = {
+		hx + ox * FIXED_DEC(11,1) - FIXED_DEC(12,1),
+		FIXED_DEC(SCREEN_HEIGHT2 - 32 + 4 - 12, 1),
+		src.w << FIXED_SHIFT,
+		src.h << FIXED_SHIFT
+	};
+	if (stage.downscroll)
+		dst.y = -dst.y - dst.h;
+	
+	//Draw health icon
+	Stage_DrawTex(&stage.tex_hud1, &src, &dst, FIXED_MUL(stage.bump, stage.obump));
 }
 
 static void Stage_DrawStrum(u8 i, RECT *note_src, RECT_FIXED *note_dst)
@@ -1016,39 +1037,6 @@ static void Stage_DrawNotes(void)
 				if (stage.downscroll)
 					note_dst.y = -note_dst.y - note_dst.h;
 				Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
-				
-				if (stage.stage_id == StageId_Clwn_4)
-				{
-					//Draw note halo
-					note_src.x = 160;
-					note_src.y = 128 + ((animf_count & 0x3) << 3);
-					note_src.w = 32;
-					note_src.h = 8;
-					
-					note_dst.y -= FIXED_DEC(6,1);
-					note_dst.h >>= 2;
-					
-					Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
-				}
-				else
-				{
-					//Draw note fire
-					note_src.x = 192 + ((animf_count & 0x1) << 5);
-					note_src.y = 64 + ((animf_count & 0x2) * 24);
-					note_src.w = 32;
-					note_src.h = 48;
-					
-					if (stage.downscroll)
-					{
-						note_dst.y += note_dst.h;
-						note_dst.h = note_dst.h * -3 / 2;
-					}
-					else
-					{
-						note_dst.h = note_dst.h * 3 / 2;
-					}
-					Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
-				}
 			}
 			else
 			{
@@ -1506,7 +1494,38 @@ static void Stage_LoadState(void)
 	stage.gf_speed = 1 << 2;
 	stage.gf2_speed = 1 << 2;
 	
-	stage.state = StageState_Play;
+	if (stage.cutscene)
+	{
+		if (stage.stage_id == StageId_1_1)
+		{
+			Stage_LoadDia();
+			stage.state = StageState_Dialogue;
+		}
+		else if (stage.stage_id == StageId_1_2)
+		{
+			Stage_LoadDia();
+			stage.state = StageState_Dialogue;
+		}
+		else if (stage.stage_id == StageId_1_3)
+		{
+			Stage_LoadDia();
+			stage.state = StageState_Dialogue;
+		}
+		else if (stage.stage_id == StageId_1_4)
+		{
+			Stage_LoadDia();
+			stage.state = StageState_Dialogue;
+		}
+		else if (stage.stage_id == StageId_2_1)
+		{
+			Stage_LoadDia();
+			stage.state = StageState_Dialogue;
+		}
+		else
+			stage.state = StageState_Play;
+	}
+	else
+		stage.state = StageState_Play;
 	
 	stage.player_state[0].character = stage.player;
 	if (stage.player2 != NULL)
@@ -1543,6 +1562,8 @@ static void Stage_LoadState(void)
 		stage.timercount = 0;
 		
 		stage.player_state[i].pad_held = stage.player_state[i].pad_press = 0;
+		
+		stage.dselect = 0;
 	}
 	
 	ObjectList_Free(&stage.objlist_splash);
@@ -1559,10 +1580,7 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 	stage.story = story;
 	
 	//Load HUD textures
-	if (id >= StageId_6_1 && id <= StageId_6_3)
-		Gfx_LoadTex(&stage.tex_hud0, IO_Read("\\STAGE\\HUD0WEEB.TIM;1"), GFX_LOADTEX_FREE);
-	else
-		Gfx_LoadTex(&stage.tex_hud0, IO_Read("\\STAGE\\HUD0.TIM;1"), GFX_LOADTEX_FREE);
+	Gfx_LoadTex(&stage.tex_hud0, IO_Read("\\STAGE\\HUD0.TIM;1"), GFX_LOADTEX_FREE);
 	Gfx_LoadTex(&stage.tex_hud1, IO_Read("\\STAGE\\HUD1.TIM;1"), GFX_LOADTEX_FREE);
 	
 	//Load stage background
@@ -1614,6 +1632,7 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 	
 	stage.bump = FIXED_UNIT;
 	stage.sbump = FIXED_UNIT;
+	stage.obump = FIXED_UNIT;
 	
 	//Initialize stage according to mode
 	stage.note_swap = (stage.mode == StageMode_Swap) ? 4 : 0;
@@ -1809,6 +1828,16 @@ static boolean Stage_NextLoad(void)
 		Timer_Reset();
 		return true;
 	}
+}
+
+//load dialogue related files
+void Stage_LoadDia(void)
+{
+	Stage *this = (Stage*)Mem_Alloc(sizeof(Stage));
+
+	Gfx_LoadTex(&stage.tex_dialog, IO_Read("\\STAGE\\DIALOG0.TIM;1"), GFX_LOADTEX_FREE);
+
+	FontData_Load(&stage.font_arial, Font_Arial);
 }
 
 void Stage_Tick(void)
@@ -2184,15 +2213,12 @@ void Stage_Tick(void)
 			if ((stage.bump = FIXED_UNIT + FIXED_MUL(stage.bump - FIXED_UNIT, FIXED_DEC(95,100))) <= FIXED_DEC(1003,1000))
 				stage.bump = FIXED_UNIT;
 			stage.sbump = FIXED_UNIT + FIXED_MUL(stage.sbump - FIXED_UNIT, FIXED_DEC(60,100));
+			stage.obump = FIXED_UNIT + FIXED_MUL(stage.obump - FIXED_UNIT, FIXED_DEC(30,100));
 			
 			if (playing && (stage.flag & STAGE_FLAG_JUST_STEP))
 			{
 				//Check if screen should bump
 				boolean is_bump_step = (stage.song_step & 0xF) == 0;
-				
-				//M.I.L.F bumps
-				if (stage.stage_id == StageId_4_3 && stage.song_step >= (168 << 2) && stage.song_step < (200 << 2))
-					is_bump_step = (stage.song_step & 0x3) == 0;
 				
 				//Bump screen
 				if (is_bump_step)
@@ -2201,6 +2227,7 @@ void Stage_Tick(void)
 				//Bump health every 4 steps
 				if ((stage.song_step & 0x3) == 0)
 					stage.sbump = FIXED_DEC(103,100);
+					stage.obump = FIXED_DEC(110,100);
 			}
 			
 			//Scroll camera
@@ -2856,6 +2883,7 @@ void Stage_Tick(void)
 			//Reset stage state
 			stage.flag = 0;
 			stage.bump = stage.sbump = FIXED_UNIT;
+			stage.bump = stage.obump = FIXED_UNIT;
 			
 			//Change background colour to black
 			Gfx_SetClear(0, 0, 0);
@@ -2934,6 +2962,366 @@ void Stage_Tick(void)
 			stage.player3->tick(stage.player3);
 			if (stage.player4 != NULL)
 			stage.player4->tick(stage.player4);
+			break;
+		}
+		case StageState_Dialogue:
+		{
+			//oh boy 2.0
+
+			static const struct
+			{
+				const char *text;
+				boolean talker;
+			}disruptdia[6] = {
+				{"THERE YOU ARE!!!",0},
+				{"Beep?",1},
+				{"DAVE SENT ME TO GET YOU!!!",0},
+				{"SAYS YOU NOT ALLOWED HERE!!!",0},
+				{"Bap!",1},
+				{"YOU GONNA DISRUPT THIS 3D WORLD!!!!!",0},
+			};
+
+			static const struct
+			{
+				const char *text;
+				boolean talker;
+			}coredia[13] = {
+				{"Howdy!",0},
+				{"Bop?",1},
+				{"Can I show you something?",0},
+				{"Bep!",1},
+				{"Check this out!",0},
+				{"I got lots o' phones!",0},
+				{"Neat, huh?",0},
+				{"Boop!",1},
+				{"Ooh, is that a microphone?",0},
+				{"Are you a singer?",0},
+				{"Beep!",1},
+				{"Wanna sing?",0},
+				{"Brap",1},
+			};
+
+			static const struct
+			{
+				const char *text;
+				boolean talker;
+			}disabledia[8] = {
+				{"So, you got past Bambi?",0},
+				{"Beep.",1},
+				{"Guess I'll have to do everything myself.",0},
+				{"I can control the 3D world better than I\nthought I could.",0},
+				{"We'll sing one song.",0},
+				{"I win, you leave.",0},
+				{"You win, I'll let you be.",0},
+				{"Bap!",1},
+			};
+			
+			static const struct
+			{
+				const char *text;
+				boolean talker;
+			}wiredia[7] = {
+				{"ALRIGHT, THAT IS IT!",0},
+				{"NO MORE FOOLING AROUND!",0},
+				{"Beep?!",1},
+				{"IF YOU THINK YOU CAN JUST BE HERE\nWITH NO CONSQUENSES..",0},
+				{"YOU ARE DEAD WRONG!",0},
+				{"THIS IS YOUR LAST CHANCE TO LEAVE.",0},
+				{"Bap!",1},
+			};
+			
+			static const struct
+			{
+				const char *text;
+				boolean talker;
+			}algebradia[6] = {
+				{"Hey there!",0},
+				{"Welcome to my school!",0},
+				{"People don't visit me that often, so I'm glad\nyou're here!",0},
+				{"Beep?",1},
+				{"Don't worry about my disability, I can get\naround myself.",0},
+				{"Bap!",1},
+			};
+
+
+
+			RECT weebbox_src = {1, 200, 254, 55};
+
+			RECT disrupt_src = {0, 0, 59, 67};
+
+			RECT bandu_src = {60, 0, 53, 72};
+			
+			RECT cripple_src = {114, 0, 50, 65};
+
+			RECT wfdave_src = {0, 69, 63, 66};
+			
+			RECT ogdave_src = {65, 74, 56, 66};
+
+			RECT bf_src = {196, 0, 60, 60};
+			
+			RECT bfalt_src = {196, 62, 60, 60};
+
+			//???
+			Stage *this = (Stage*)this;
+
+			//play dialogue song
+			if (Audio_PlayingXA() != 1)
+			{
+				switch (stage.stage_id)
+				{
+					case StageId_1_1:
+						Audio_PlayXA_Track(XA_Ambiance, 0x40, 1, true); //playsong
+						break;
+					case StageId_1_2:
+						Audio_PlayXA_Track(XA_Dialogue, 0x40, 0, true); //playsong
+						break;
+					case StageId_1_3:
+						Audio_PlayXA_Track(XA_Dialogue, 0x40, 0, true); //playsong
+						break;
+					case StageId_1_4:
+						Audio_PlayXA_Track(XA_Ambiance, 0x40, 1, true); //playsong
+						break;
+					case StageId_2_1:
+						Audio_PlayXA_Track(XA_Dialogue, 0x40, 0, true); //playsong
+						break;
+				}
+			}
+
+			//Text drawing
+			switch (stage.stage_id)
+			{
+				case StageId_1_1:
+				{
+					//draw main text
+					stage.font_arial.draw_col(&stage.font_arial,
+						disruptdia[stage.dselect].text,
+						35,
+						150,
+						FontAlign_Left,
+						52 >> 1,
+						29 >> 1,
+						31 >> 1
+					);
+
+					if (stage.dselect == 6)
+					{
+						Audio_StopXA();
+						stage.state = StageState_Play;
+					}
+					Dia_MovePort(disruptdia[stage.dselect].talker);
+					break;
+				}
+				case StageId_1_2:
+				{
+					//draw main text
+					stage.font_arial.draw_col(&stage.font_arial,
+						coredia[stage.dselect].text,
+						35,
+						150,
+						FontAlign_Left,
+						52 >> 1,
+						29 >> 1,
+						31 >> 1
+					);
+
+					if (stage.dselect == 13)
+					{
+						Audio_StopXA();
+						stage.state = StageState_Play;
+					}
+					Dia_MovePort(coredia[stage.dselect].talker);
+					break;
+				}
+				case StageId_1_3:
+				{
+					//draw main text
+					stage.font_arial.draw_col(&stage.font_arial,
+						disabledia[stage.dselect].text,
+						35,
+						150,
+						FontAlign_Left,
+						52 >> 1,
+						29 >> 1,
+						31 >> 1
+					);
+
+					if (stage.dselect == 8)
+					{
+						Audio_StopXA();
+						stage.state = StageState_Play;
+					}
+					Dia_MovePort(disabledia[stage.dselect].talker);
+					break;
+				}
+				case StageId_1_4:
+				{
+					//draw main text
+					stage.font_arial.draw_col(&stage.font_arial,
+						wiredia[stage.dselect].text,
+						35,
+						150,
+						FontAlign_Left,
+						52 >> 1,
+						29 >> 1,
+						31 >> 1
+					);
+
+					if (stage.dselect == 7)
+					{
+						Audio_StopXA();
+						stage.state = StageState_Play;
+					}
+					Dia_MovePort(wiredia[stage.dselect].talker);
+					break;
+				}
+				case StageId_2_1:
+				{
+					//draw main text
+					stage.font_arial.draw_col(&stage.font_arial,
+						algebradia[stage.dselect].text,
+						35,
+						150,
+						FontAlign_Left,
+						52 >> 1,
+						29 >> 1,
+						31 >> 1
+					);
+
+					if (stage.dselect == 6)
+					{
+						Audio_StopXA();
+						stage.state = StageState_Play;
+					}
+					Dia_MovePort(algebradia[stage.dselect].talker);
+					break;
+				}
+				default:
+					break;
+			}
+
+			//controller shit
+			
+			//skip dialogue
+			if (pad_state.press & PAD_START)
+			{
+			    Audio_StopXA();
+			    stage.state = StageState_Play;
+			}
+			
+			//progress to next message
+			if (pad_state.press & PAD_TRIANGLE)
+			{
+				stage.dselect++;
+			}
+
+
+			//draw dialogue box
+			RECT weebbox_dst = {5, 114, 254 * 1.2, 55 * 2};
+			Gfx_DrawTex(&stage.tex_dialog, &weebbox_src, &weebbox_dst);
+
+
+			RECT disrupt_dst = {disruptx, 12, disrupt_src.w * 2, disrupt_src.h * 2};
+
+			RECT bandu_dst = {disruptx, 12, bandu_src.w * 2, bandu_src.h * 2};
+			
+			RECT cripple_dst = {disruptx, 12, cripple_src.w * 2, cripple_src.h * 2};
+
+			RECT wfdave_dst = {disruptx, 12, wfdave_src.w * 2, wfdave_src.h * 2};
+
+			RECT ogdave_dst = {disruptx, 12, ogdave_src.w * 2, ogdave_src.h * 2};
+
+			switch (stage.stage_id)
+			{
+				case StageId_1_1:
+					Gfx_DrawTex(&stage.tex_dialog, &disrupt_src, &disrupt_dst);
+					break;
+				case StageId_1_2:
+					Gfx_DrawTex(&stage.tex_dialog, &bandu_src, &bandu_dst);
+					break;
+				case StageId_1_3:
+					Gfx_DrawTex(&stage.tex_dialog, &cripple_src, &cripple_dst);
+					break;
+				case StageId_1_4:
+					Gfx_DrawTex(&stage.tex_dialog, &wfdave_src, &wfdave_dst);
+					break;
+				case StageId_2_1:
+					Gfx_DrawTex(&stage.tex_dialog, &ogdave_src, &ogdave_dst);
+			}
+
+			RECT bf_dst = {bfx, 40, bf_src.w * 2, bf_src.h * 2};
+			
+			RECT bfalt_dst = {bfx, 40, bfalt_src.w * 2, bfalt_src.h * 2};
+			
+			switch (stage.stage_id)
+			{
+				case StageId_1_1:
+					Gfx_DrawTex(&stage.tex_dialog, &bfalt_src, &bfalt_dst);
+					break;
+				case StageId_1_2:
+					Gfx_DrawTex(&stage.tex_dialog, &bf_src, &bf_dst);
+					break;
+				case StageId_1_3:
+					Gfx_DrawTex(&stage.tex_dialog, &bf_src, &bf_dst);
+					break;
+				case StageId_1_4:
+					Gfx_DrawTex(&stage.tex_dialog, &bfalt_src, &bfalt_dst);
+					break;
+				case StageId_2_1:
+					Gfx_DrawTex(&stage.tex_dialog, &bf_src, &bf_dst);
+			}
+
+
+
+			//draw transparent blueish grey filter
+			static const RECT walterwhite = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
+			Gfx_BlendRect(&walterwhite, 174, 219, 224, 0);
+
+
+			//Draw stage foreground
+			if (stage.back->draw_fg != NULL)
+				stage.back->draw_fg(stage.back);
+			
+			//Tick foreground objects
+			ObjectList_Tick(&stage.objlist_fg);
+			
+			//Tick characters
+			stage.player->tick(stage.player);
+			if (stage.player2 != NULL)
+			stage.player2->tick(stage.player2);
+			if (stage.player3 != NULL)
+			stage.player3->tick(stage.player3);
+			if (stage.player4 != NULL)
+			stage.player4->tick(stage.player4);
+			
+			if (stage.opponent2 != NULL)
+			stage.opponent2->tick(stage.opponent2);
+			if (stage.opponent3 != NULL)
+			stage.opponent3->tick(stage.opponent3);
+			if (stage.opponent4 != NULL)
+			stage.opponent4->tick(stage.opponent4);
+
+			//Tick girlfriend2
+			if (stage.gf2 != NULL)
+				stage.gf2->tick(stage.gf2);
+			
+			stage.opponent->tick(stage.opponent);
+			
+			//Draw stage middle
+			if (stage.back->draw_md != NULL)
+				stage.back->draw_md(stage.back);
+			
+			//Tick girlfriend
+			if (stage.gf != NULL)
+				stage.gf->tick(stage.gf);
+			
+			//Tick background objects
+			ObjectList_Tick(&stage.objlist_bg);
+			
+			//Draw stage background
+			if (stage.back->draw_bg != NULL)
+				stage.back->draw_bg(stage.back);
+
+			Stage_ScrollCamera();
 			break;
 		}
 		default:

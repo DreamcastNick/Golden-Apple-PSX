@@ -23,6 +23,7 @@ typedef enum
 	XA_Week4B, //WEEK4B.XA
 	XA_Week5A, //WEEK5A.XA
 	XA_Week5B, //WEEK5B.XA
+	XA_Cut,	   //CUT.XA
 	
 	XA_Max,
 } XA_File;
@@ -60,6 +61,9 @@ typedef enum
 	XA_Eggnog, //Eggnog
 	//WEEK5B.XA
 	XA_WinterHorrorland, //Winter Horrorland
+	//CUT.XA
+	XA_Dialogue,    //DaveDialogue
+	XA_Ambiance, //ScaryAmbiance
 	
 	XA_TrackMax,
 } XA_Track;

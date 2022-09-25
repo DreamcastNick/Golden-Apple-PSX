@@ -10,6 +10,7 @@
 #include "../archive.h"
 #include "../stage.h"
 #include "../main.h"
+#include "../mutil.h"
 
 //Bandu character structure
 enum

@@ -212,6 +212,29 @@ void Gfx_BlitTexCol(Gfx_Tex *tex, const RECT *src, s32 x, s32 y, u8 r, u8 g, u8 
 	nextpri += sizeof(DR_TPAGE);
 }
 
+
+void Gfx_BlitTexColSize(Gfx_Tex *tex, const RECT *src, const RECT *dst, s32 x, s32 y, u8 r, u8 g, u8 b)
+{
+	//Add sprite
+	SPRT *sprt = (SPRT*)nextpri;
+	setSprt(sprt);
+	setXY0(sprt, x, y);
+	setWH(sprt, dst->w, dst->h);
+	setUV0(sprt, src->x, src->y);
+	setRGB0(sprt, r, g, b);
+	sprt->clut = tex->clut;
+
+	addPrim(ot[db], sprt);
+	nextpri += sizeof(SPRT);
+
+	//Add tpage change (TODO: reduce tpage changes)
+	DR_TPAGE *tpage = (DR_TPAGE*)nextpri;
+	setDrawTPage(tpage, 0, 1, tex->tpage);
+
+	addPrim(ot[db], tpage);
+	nextpri += sizeof(DR_TPAGE);
+}
+
 void Gfx_BlitTex(Gfx_Tex *tex, const RECT *src, s32 x, s32 y)
 {
 	Gfx_BlitTexCol(tex, src, x, y, 0x80, 0x80, 0x80);

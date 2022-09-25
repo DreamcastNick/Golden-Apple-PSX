@@ -1,4 +1,4 @@
-	{ //StageId_1_1 (Bopeebo)
+	{ //StageId_1_1 (Disruption)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
 		{NULL},
@@ -21,7 +21,7 @@
 		
 		StageId_1_1, 0
 	},
-	{ //StageId_1_2 (Fresh)
+	{ //StageId_1_2 (Applecore)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
 		{NULL},
@@ -44,7 +44,7 @@
 		
 		StageId_1_2, 0
 	},
-	{ //StageId_1_3 (Dadbattle)
+	{ //StageId_1_3 (Disability)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
 		{NULL},
@@ -67,7 +67,7 @@
 		
 		StageId_1_3, 0
 	},
-	{ //StageId_1_4 (Tutorial)
+	{ //StageId_1_4 (Wireframe)
 		//Characters
 		{Char_WFBF_New, FIXED_DEC(60,1),  FIXED_DEC(10,1)},
 		{NULL},
@@ -91,7 +91,7 @@
 		StageId_1_4, 0
 	},
 	
-	{ //StageId_2_1 (Spookeez)
+	{ //StageId_2_1 (Algebra)
 		//Characters
 		{Char_TDBF_New,      FIXED_DEC(136,1),   FIXED_DEC(112,1)},
 		{NULL},
@@ -114,7 +114,7 @@
 		
 		StageId_2_1, 0
 	},
-	{ //StageId_2_2 (South)
+	{ //StageId_2_2 (Sugar Rush)
 		//Characters
 		{Char_BF_New,      FIXED_DEC(40,1),   FIXED_DEC(45,1)},
 		{NULL},
@@ -137,7 +137,7 @@
 		
 		StageId_2_2, 0
 	},
-	{ //StageId_2_3 (Monster)
+	{ //StageId_2_3 (Origin)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
 		{NULL},
@@ -160,7 +160,7 @@
 		
 		StageId_2_3, 0
 	},	
-	{ //StageId_2_4 (Clucked)
+	{ //StageId_2_4 (Metallic)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
 		{NULL},
@@ -184,7 +184,7 @@
 		StageId_2_4, 0
 	},
 	
-	{ //StageId_3_1 (Pico)
+	{ //StageId_3_1 (Strawberry)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
 		{NULL},
@@ -207,7 +207,7 @@
 		
 		StageId_3_1, 0
 	},
-	{ //StageId_3_2 (Philly)
+	{ //StageId_3_2 (Keyboard)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
 		{NULL},
@@ -230,7 +230,7 @@
 		
 		StageId_3_2, 0
 	},
-	{ //StageId_3_3 (Blammed)
+	{ //StageId_3_3 (Ugh)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
 		{NULL},
@@ -254,7 +254,7 @@
 		StageId_3_3, 0
 	},
 	
-	{ //StageId_4_1 (Satin Panties)
+	{ //StageId_4_1 (Cycles)
 		//Characters
 		{Char_NTBandu_New,    FIXED_DEC(-200,1),  FIXED_DEC(100,1)},
 		{NULL},
@@ -277,13 +277,13 @@
 		
 		StageId_4_1, 0
 	},
-	{ //StageId_4_2 (High)
+	{ //StageId_4_2 (Thunderstorm)
 		//Characters
-		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
+		{Char_BF_New,     FIXED_DEC(60,1),   FIXED_DEC(100,1)},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
+		{Char_PNG_New,  FIXED_DEC(-156,1),   FIXED_DEC(24,1)},
 		{NULL},
 		{NULL},
 		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
@@ -291,63 +291,63 @@
 		{NULL},
 		
 		//Stage background
-		Back_Week4_New,
+		Back_Week5_New,
 		
 		//Song info
-		{FIXED_DEC(13,10),FIXED_DEC(18,10),FIXED_DEC(2,1)},
+		{FIXED_DEC(25,10),FIXED_DEC(25,10),FIXED_DEC(25,10)},
 		4, 2,
 		XA_High, 2,
 		
 		StageId_4_2, 0
 	},
-	{ //StageId_4_3 (MILF)
+	{ //StageId_4_3 (Wheels)
 		//Characters
-		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
+		{Char_BF_New,     FIXED_DEC(120,1),   FIXED_DEC(100,1)},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
+		{Char_Pooper_New,  FIXED_DEC(-156,1),   FIXED_DEC(48,1)},
 		{NULL},
 		{NULL},
-		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
+		{Char_BestGF_New,     FIXED_DEC(-60,1),  FIXED_DEC(-10,1)},
 		{NULL},
 		{NULL},
 		
 		//Stage background
-		Back_Week4_New,
+		Back_Week5_New,
 		
 		//Song info
-		{FIXED_DEC(14,10),FIXED_DEC(17,10),FIXED_DEC(26,10)},
+		{FIXED_DEC(26,10),FIXED_DEC(26,10),FIXED_DEC(26,10)},
 		4, 3,
 		XA_MILF, 0,
 		
 		StageId_4_3, 0
 	},
-	{ //StageId_4_4 (Test)
+	{ //StageId_4_4 (Dave X Bambi Shipping Cute)
 		//Characters
-		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
+		{Char_Dave_New,  FIXED_DEC(60,1),   FIXED_DEC(24,1)},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
+		{Char_Bambi_New,  FIXED_DEC(-120,1),   FIXED_DEC(90,1)},
 		{NULL},
 		{NULL},
-		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
+		{NULL},
 		{NULL},
 		{NULL},
 		
 		//Stage background
-		Back_Dummy_New,
+		Back_Week1_New,
 		
 		//Song info
-		{FIXED_DEC(16,10),FIXED_DEC(16,10),FIXED_DEC(16,10)},
+		{FIXED_DEC(25,10),FIXED_DEC(25,10),FIXED_DEC(25,10)},
 		4, 4,
 		XA_Test, 2,
 		
 		StageId_4_4, 0
 	},
 	
-	{ //StageId_5_1 (Cocoa)
+	{ //StageId_5_1 (Recovered Project)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
 		{NULL},
@@ -370,7 +370,7 @@
 		
 		StageId_5_1, 0
 	},
-	{ //StageId_5_2 (Eggnog)
+	{ //StageId_5_2 (Sart Producer)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
 		{NULL},
@@ -393,7 +393,7 @@
 		
 		StageId_5_2, 0
 	},
-	{ //StageId_5_3 (Winter Horrorland)
+	{ //StageId_5_3 (Old Strawberry)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
 		{NULL},

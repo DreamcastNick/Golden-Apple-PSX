@@ -93,7 +93,7 @@ static const CharFrame char_robot_frame[] = {
 };
 
 static const Animation char_robot_anim[CharAnim_Max] = {
-	{3, (const u8[]){ 0,  1,  2,  3,  2,  1,  0, ASCR_BACK, 1}},      	   	   		   	   //CharAnim_Idle
+	{3, (const u8[]){ 0,  1,  2,  1,  0, ASCR_BACK, 0}},      	   	   		   	  		   //CharAnim_Idle
 	{2, (const u8[]){ 8,  9, ASCR_BACK, 1}},       		   				    			   //CharAnim_Left
 	{2, (const u8[]){10, 11, ASCR_CHGANI, CharAnim_IdleAlt}},      		   				   //CharAnim_LeftAlt
 	{2, (const u8[]){12, 13, ASCR_BACK, 1}},  		   					   				   //CharAnim_Down

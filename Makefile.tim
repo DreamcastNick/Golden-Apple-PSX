@@ -6,11 +6,17 @@ all: \
 	iso/stage/hud0.tim \
 	iso/stage/hud1.tim \
 	iso/stage/hud0weeb.tim \
+	iso/stage/dialog0.tim \
+	iso/stage/dialog1.tim \
+	iso/stage/dialog2.tim \
+	iso/stage/dialog3.tim \
+	iso/stage/dialog4.tim \
 	iso/bf/main.arc \
 	iso/bf/dead.arc \
 	iso/bf/3d.arc \
 	iso/bf/wf.arc \
 	iso/bf/nt.arc \
+	iso/bf/dave.arc \
 	iso/ogdave/main.arc \
 	iso/garett/main.arc \
 	iso/diaman/main.arc \
@@ -29,6 +35,11 @@ all: \
 	iso/bendu/main.arc \
 	iso/cycles/main.arc \
 	iso/pooper/main.arc \
+	iso/png/main.arc \
+	iso/bambi/main.arc \
+	iso/rpa/main.arc \
+	iso/rpb/main.arc \
+	iso/rpc/main.arc \
 	iso/gf/main.arc \
 	iso/gf/tut.arc \
 	iso/gf/best.arc \
@@ -40,9 +51,6 @@ all: \
 	iso/week3/back.arc \
 	iso/week4/back.arc \
 	iso/week5/back.arc \
-	iso/week6/back.arc \
-	iso/week6/back3.tim \
-	iso/week7/back.arc \
 	iso/week8/back.arc \
 	iso/week9/back.arc 
 
@@ -61,6 +69,7 @@ iso/bf/dead.arc: iso/bf/dead1.tim iso/bf/dead2.tim iso/bf/retry.tim
 iso/bf/3d.arc: iso/bf/3dbf0.tim iso/bf/3dbf1.tim iso/bf/3dbf2.tim iso/bf/3dbf3.tim iso/bf/3dbf4.tim iso/bf/3ddead0.tim
 iso/bf/wf.arc: iso/bf/wfbf0.tim iso/bf/wfbf1.tim iso/bf/wfbf2.tim iso/bf/wfbf3.tim iso/bf/wfbf4.tim iso/bf/wfdead0.tim
 iso/bf/nt.arc: iso/bf/night0.tim iso/bf/night1.tim iso/bf/night2.tim iso/bf/night3.tim iso/bf/night4.tim iso/bf/ntdead0.tim
+iso/bf/dave.arc: iso/bf/dave0.tim iso/bf/dave1.tim iso/bf/dave2.tim iso/bf/dave3.tim iso/bf/dave4.tim iso/bf/dave5.tim iso/bf/dave6.tim iso/bf/dave7.tim iso/bf/dave8.tim iso/bf/dave9.tim iso/bf/ddead0.tim
 
 # OGDave
 iso/ogdave/main.arc: iso/ogdave/idlea0.tim iso/ogdave/idleb0.tim iso/ogdave/lefta0.tim iso/ogdave/lefta1.tim iso/ogdave/leftb0.tim iso/ogdave/leftb1.tim iso/ogdave/downa0.tim iso/ogdave/downa1.tim iso/ogdave/downb0.tim iso/ogdave/downb1.tim iso/ogdave/upa0.tim iso/ogdave/upa1.tim iso/ogdave/upb0.tim iso/ogdave/upb1.tim iso/ogdave/righta0.tim iso/ogdave/righta1.tim iso/ogdave/rightb0.tim iso/ogdave/rightb1.tim
@@ -116,6 +125,21 @@ iso/cycles/main.arc: iso/cycles/idle0.tim iso/cycles/idle1.tim iso/cycles/idle2.
 # Dave But Awesome
 iso/pooper/main.arc: iso/pooper/idle0.tim iso/pooper/idle1.tim iso/pooper/idle2.tim iso/pooper/idle3.tim iso/pooper/idle4.tim iso/pooper/left0.tim iso/pooper/left1.tim iso/pooper/down0.tim iso/pooper/down1.tim iso/pooper/up0.tim iso/pooper/up1.tim iso/pooper/right0.tim iso/pooper/right1.tim
 
+# Dave PNG
+iso/png/main.arc: iso/png/idle0.tim iso/png/left0.tim iso/png/left1.tim iso/png/left2.tim iso/png/down0.tim iso/png/down1.tim iso/png/down2.tim iso/png/up0.tim iso/png/up1.tim iso/png/up2.tim iso/png/right0.tim iso/png/right1.tim iso/png/right2.tim
+
+# Bambi
+iso/bambi/main.arc: iso/bambi/idle0.tim iso/bambi/idle1.tim iso/bambi/left.tim iso/bambi/down.tim iso/bambi/up.tim iso/bambi/right.tim
+
+# RECOVERED_PROJECT 01
+iso/rpa/main.arc: iso/rpa/idle0.tim iso/rpa/left0.tim iso/rpa/left1.tim iso/rpa/down0.tim iso/rpa/down1.tim iso/rpa/up0.tim iso/rpa/up1.tim iso/rpa/right0.tim iso/rpa/right1.tim
+
+# RECOVERED_PROJECT 02
+iso/rpb/main.arc: iso/rpb/idle0.tim iso/rpb/idle1.tim iso/rpb/idle2.tim iso/rpb/idle3.tim iso/rpb/idle4.tim iso/rpb/idle5.tim iso/rpb/idle6.tim iso/rpb/idle7.tim iso/rpb/idle8.tim iso/rpb/idle9.tim iso/rpb/idle10.tim iso/rpb/idle11.tim iso/rpb/left0.tim iso/rpb/left1.tim iso/rpb/down0.tim iso/rpb/down1.tim iso/rpb/up0.tim iso/rpb/up1.tim iso/rpb/right0.tim iso/rpb/right1.tim
+
+# RECOVERED_PROJECT 03
+iso/rpc/main.arc: iso/rpc/idle0.tim iso/rpc/left0.tim iso/rpc/left1.tim iso/rpc/left2.tim iso/rpc/down0.tim iso/rpc/down1.tim iso/rpc/down2.tim iso/rpc/up0.tim iso/rpc/up1.tim iso/rpc/up2.tim iso/rpc/right0.tim iso/rpc/right1.tim iso/rpc/right2.tim
+
 # GF
 iso/gf/main.arc: iso/gf/gf0.tim iso/gf/gf1.tim iso/gf/gf2.tim
 iso/gf/tut.arc: iso/gf/tut0.tim iso/gf/tut1.tim
@@ -138,16 +162,10 @@ iso/week3/back.arc: iso/week3/back0.tim iso/week3/back1.tim iso/week3/back2.tim
 iso/week4/back.arc: iso/week4/back0.tim iso/week4/back1.tim iso/week4/back2.tim
 
 # Week 5
-iso/week5/back.arc: iso/week5/back0.tim
-
-# Week6
-iso/week6/back.arc: iso/week6/back0.tim iso/week6/back1.tim iso/week6/back2.tim
-
-# Week 7
-iso/week7/back.arc: iso/week7/back0.tim iso/week7/back1.tim iso/week7/back2.tim iso/week7/back3.tim
+iso/week5/back.arc: iso/week5/back0.tim iso/week5/back1.tim iso/week5/back2.tim
 
 # Week 8
-iso/week8/back.arc: iso/week8/back0.tim
+iso/week8/back.arc: iso/week8/back0.tim iso/week8/back1.tim iso/week8/back2.tim
 
-# Week 8
+# Week 9
 iso/week9/back.arc: iso/week9/back0.tim

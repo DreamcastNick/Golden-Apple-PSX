@@ -15,6 +15,7 @@
 #include "character.h"
 #include "player.h"
 #include "object.h"
+#include "font.h"
 
 #include "network.h"
 
@@ -67,24 +68,6 @@ typedef enum
 	StageId_5_1, //Cocoa
 	StageId_5_2, //Eggnog
 	StageId_5_3, //Winter Horrorland
-	
-	StageId_6_1, //Senpai
-	StageId_6_2, //Roses
-	StageId_6_3, //Thorns
-	
-	StageId_7_1, //Ugh
-	StageId_7_2, //Guns
-	StageId_7_3, //Stress
-	
-	StageId_Kapi_1, //Wocky
-	StageId_Kapi_2, //Beathoven
-	StageId_Kapi_3, //Hairball
-	StageId_Kapi_4, //Nyaw
-	
-	StageId_Clwn_1, //Improbable Outset
-	StageId_Clwn_2, //Madness
-	StageId_Clwn_3, //Hellclown
-	StageId_Clwn_4, //Expurgation
 	
 	StageId_Max
 } StageId;
@@ -201,13 +184,13 @@ typedef struct
 typedef struct
 {
 	//Stage settings
-	boolean ghost, downscroll, middlescroll, expsync;
+	boolean ghost, cutscene, downscroll, middlescroll, expsync;
 	s32 mode;
 	
 	u32 offset;
 	
 	//HUD textures
-	Gfx_Tex tex_hud0, tex_hud1;
+	Gfx_Tex tex_hud0, tex_dialog, tex_hud1;
 	
 	//Stage data
 	const StageDef *stage_def;
@@ -227,6 +210,7 @@ typedef struct
 	boolean story;
 	u8 flag;
 	StageTrans trans;
+	s32 animcounter;
 	
 	struct
 	{
@@ -234,7 +218,7 @@ typedef struct
 		fixed_t tx, ty, tz, td;
 		fixed_t bzoom;
 	} camera;
-	fixed_t bump, sbump;
+	fixed_t bump, sbump, obump;
 	
 	StageBack *back;
 	
@@ -260,18 +244,22 @@ typedef struct
 	u16 step_base;
 	Section *section_base;
 	
+	u16 dselect;
+	
 	s16 noteshakex;
 	s16 noteshakey;
 	
-	s32 song_step;
-	
-	s32 timercount;
+	int song_step;
+	int timercount;
 	
 	u8 gf_speed;  //Typically 4 steps, changes in Fresh
 	u8 gf2_speed; //Typically 4 steps, changes in Fresh
 	
 	PlayerState player_state[2];
 	u32 max_score;
+	
+	//fonts
+	FontData font_arial;
 	
 	enum
 	{
@@ -281,6 +269,7 @@ typedef struct
 		StageState_DeadDrop,   //Mic drop
 		StageState_DeadRetry,  //Retry prompt
 		StageState_DeadDecide, //Decided
+		StageState_Dialogue,   //Dialogue for main songs
 	} state;
 	
 	u8 note_swap;
