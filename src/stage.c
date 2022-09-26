@@ -23,7 +23,7 @@
 #include "object/splash.h"
 
 //Stage constants
-#define STAGE_PERFECT //Play all notes perfectly
+//#define STAGE_PERFECT //Play all notes perfectly
 //#define STAGE_NOHUD //Disable the HUD
 
 //#define STAGE_FREECAM //Freecam
@@ -95,6 +95,10 @@ boolean opponentsing;
 #include "character/pooper.h"
 #include "character/png.h"
 #include "character/bambi.h"
+#include "character/rpa.h"
+#include "character/rpb.h"
+#include "character/rpc.h"
+#include "character/sart.h"
 #include "character/gf.h"
 #include "character/gfb.h"
 #include "character/bestgf.h"
@@ -2029,6 +2033,17 @@ void Stage_Tick(void)
 				}
 			}
 			else if (stage.stage_id == StageId_2_1)
+			{
+				switch (stage.song_step)
+				{
+					case 0:
+						opponentsing = 1;
+						opponent2sing = 1;
+						opponent3sing = 1;	
+						break;
+				}
+			}
+			else if (stage.stage_id == StageId_5_1)
 			{
 				switch (stage.song_step)
 				{

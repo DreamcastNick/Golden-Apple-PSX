@@ -349,22 +349,22 @@
 	
 	{ //StageId_5_1 (Recovered Project)
 		//Characters
-		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
+		{Char_BF_New,     FIXED_DEC(60,1),   FIXED_DEC(100,1)},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
-		{NULL},
-		{NULL},
+		{Char_RPA_New,  FIXED_DEC(-120,1),   FIXED_DEC(24,1)},
+		{Char_RPB_New,  FIXED_DEC(-120,1),   FIXED_DEC(24,1)},
+		{Char_RPC_New,  FIXED_DEC(-120,1),   FIXED_DEC(24,1)},
 		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
 		{NULL},
 		{NULL},
 		
 		//Stage background
-		Back_Week5_New,
+		Back_Week8_New,
 		
 		//Song info
-		{FIXED_DEC(13,10),FIXED_DEC(13,10),FIXED_DEC(13,10)},
+		{FIXED_DEC(31,10),FIXED_DEC(31,10),FIXED_DEC(31,10)},
 		5, 1,
 		XA_Cocoa, 0,
 		
@@ -372,22 +372,22 @@
 	},
 	{ //StageId_5_2 (Sart Producer)
 		//Characters
-		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
+		{Char_BF_New,     FIXED_DEC(120,1),   FIXED_DEC(100,1)},
 		{NULL},
 		{NULL},
 		{NULL},
-		{Char_OGDave_New,  FIXED_DEC(-128,1),   FIXED_DEC(112,1)},
+		{Char_Sart_New,  FIXED_DEC(-240,1),   FIXED_DEC(-48,1)},
 		{NULL},
 		{NULL},
-		{Char_GF_New,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
+		{Char_GF_New,     FIXED_DEC(60,1),  FIXED_DEC(0,1)},
 		{NULL},
 		{NULL},
 		
 		//Stage background
-		Back_Week5_New,
+		Back_Week9_New,
 		
 		//Song info
-		{FIXED_DEC(14,10),FIXED_DEC(16,10),FIXED_DEC(19,10)},
+		{FIXED_DEC(26,10),FIXED_DEC(26,10),FIXED_DEC(26,10)},
 		5, 2,
 		XA_Eggnog, 2,
 		

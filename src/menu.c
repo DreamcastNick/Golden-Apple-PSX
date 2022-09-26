@@ -43,7 +43,7 @@ static const char *funny_messages[][2] = {
 	{"DOPE ASS GAME", "PLAYSTATION MAGAZINE"},
 	{"UNSTOPABLE", "FOREVER"},
 	{"DAVE X BAMBI", "STINKY"},
-	{"JOUL", "BIGGEST SUPPORTER"},
+	{"JOHN PAUL", "BIGGEST SUPPORTER"},
 	{"BANDU IS A TRANS MAN", "DEAL WITH IT"},
 	{"USE A CONTROLLER", "LOL"},
 	{"SNIPING THE KICKSTARTER", "HAHA"},
@@ -762,8 +762,8 @@ void Menu_Tick(void)
 				{StageId_4_2, 0xFF4059E1, "THUNDERSTORM", false},
 				{StageId_4_3, 0xFF4059E1, "WHEELS", false},
 				{StageId_4_4, 0xFF4059E1, "DAVE X BAMBI SHIPPING CUTE", false},
-				//{StageId_5_1, 0xFF4059E1, "RECOVERED PROJECT", false},
-				//{StageId_5_2, 0xFF000000, "SART PRODUCER", false},
+				{StageId_5_1, 0xFF4059E1, "RECOVERED PROJECT", false},
+				{StageId_5_2, 0xFF000000, "SART PRODUCER", false},
 				{StageId_5_3, 0xFF00A012, "OLD STRAWBERRY", false},
 			};
 			
@@ -934,6 +934,12 @@ void Menu_Tick(void)
 				{StageId_2_4, "J REVERBFARTSFX", 0xFF0000, false},
 				{StageId_2_4, "THELOSER", 0xFF0000, false},
 				{StageId_2_1, "VILLEZEN", 0xFF0000, false},
+				{StageId_1_1, "	CREDITS CODE", 0xFF0000, false},
+				{StageId_1_1,    "", 0xFF0000, false},
+				{StageId_2_1, "ZERIBEN", 0xFF0000, false},
+				{StageId_1_1, "	DIALOGUE CODE", 0xFF0000, false},
+				{StageId_1_1,    "", 0xFF0000, false},
+				{StageId_2_1, "BILIOUSDATA", 0xFF0000, false},
 			};
 
 			//Initialize page

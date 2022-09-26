@@ -18,9 +18,6 @@ enum
 	GFB_ArcMain_GFB1,
 	GFB_ArcMain_GFB2,
 	
-	GFB_ArcScene_0, //tut0
-	GFB_ArcScene_1, //tut1
-	
 	GFB_Arc_Max,
 };
 
@@ -59,31 +56,17 @@ static const CharFrame char_gfb_frame[] = {
 	{GFB_ArcMain_GFB2, {  0, 101,  74, 102}, { 35,  72}}, //15 cry 4
 	{GFB_ArcMain_GFB2, { 75, 102,  73, 102}, { 34,  72}}, //16 cry 5
 	
-	{GFB_ArcScene_0, {  0,   0,  75, 102}, { 39,  71}}, //21 left 1
-	{GFB_ArcScene_0, { 76,   0,  77, 103}, { 41,  72}}, //22 left 2
-	
-	{GFB_ArcScene_0, {154,   0,  79, 102}, { 37,  71}}, //23 down 1
-	{GFB_ArcScene_0, {  0, 103,  78, 104}, { 37,  72}}, //24 down 2
-	
-	{GFB_ArcScene_0, { 79, 104,  79, 108}, { 39,  78}}, //25 up 1
-	{GFB_ArcScene_0, {159, 104,  79, 109}, { 39,  78}}, //26 up 2
-	
-	{GFB_ArcScene_1, {  0,   0,  81, 102}, { 41,  71}}, //27 right 1
-	{GFB_ArcScene_1, { 81,   0,  76, 103}, { 36,  72}}, //28 right 2
-	
-	{GFB_ArcScene_1, {158,   0,  75, 108}, { 36,  78}}, //29 cheer 1
-	{GFB_ArcScene_1, {  0, 103,  77, 107}, { 37,  77}}, //30 cheer 2
 };
 
 static const Animation char_gfb_anim[CharAnim_Max] = {
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_LeftAlt}},                        //CharAnim_Idle
-	{2, (const u8[]){21, 22, ASCR_BACK, 1}},                                 //CharAnim_Left
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_LeftAlt}},                        //CharAnim_Left
 	{1, (const u8[]){ 0,  0,  1,  1,  2,  2,  3,  4,  4,  5, ASCR_BACK, 1}}, //CharAnim_LeftAlt
-	{2, (const u8[]){23, 24, ASCR_BACK, 1}},                                 //CharAnim_Down
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_LeftAlt}},                        //CharAnim_Down
 	{1, (const u8[]){12, 13, 14, 15, 16, ASCR_REPEAT}},                      //CharAnim_DownAlt
-	{2, (const u8[]){25, 26, ASCR_BACK, 1}},                                 //CharAnim_Up
-	{2, (const u8[]){29, 30, ASCR_BACK, 1}},                                 //CharAnim_UpAlt
-	{2, (const u8[]){27, 28, ASCR_BACK, 1}},                                 //CharAnim_Right
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_LeftAlt}},                        //CharAnim_Up
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_LeftAlt}},                        //CharAnim_UpAlt
+	{0, (const u8[]){ASCR_CHGANI, CharAnim_LeftAlt}},                        //CharAnim_Right
 	{1, (const u8[]){ 6,  6,  7,  7,  8,  8,  9, 10, 10, 11, ASCR_BACK, 1}}, //CharAnim_RightAlt
 };
 
@@ -181,28 +164,6 @@ Character *Char_GFB_New(fixed_t x, fixed_t y)
 	IO_Data *arc_ptr = this->arc_ptr;
 	for (; *pathp != NULL; pathp++)
 		*arc_ptr++ = Archive_Find(this->arc_main, *pathp);
-	
-	//Load scene specific art
-	switch (stage.stage_id)
-	{
-		case StageId_1_4: //Tutorial
-		{
-			this->arc_scene = IO_Read("\\CHAR\\GFTUT.ARC;1");
-			
-			const char **pathp = (const char *[]){
-				"tut0.tim", //GFB_ArcScene_0
-				"tut1.tim", //GFB_ArcScene_1
-				NULL
-			};
-			IO_Data *arc_ptr = &this->arc_ptr[GFB_ArcScene_0];
-			for (; *pathp != NULL; pathp++)
-				*arc_ptr++ = Archive_Find(this->arc_scene, *pathp);
-			break;
-		}
-		default:
-			this->arc_scene = NULL;
-			break;
-	}
 	
 	//Initialize render state
 	this->tex_id = this->frame = 0xFF;

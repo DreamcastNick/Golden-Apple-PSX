@@ -54,6 +54,10 @@ SRCS = src/main.c \
        src/character/pooper.c \
        src/character/png.c \
        src/character/bambi.c \
+       src/character/rpa.c \
+       src/character/rpb.c \
+       src/character/rpc.c \
+	   src/character/sart.c \
        src/character/gf.c \
        src/character/gfb.c \
        src/character/bestgf.c \

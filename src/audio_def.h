@@ -34,8 +34,8 @@ static const XA_TrackDef xa_tracks[] = {
 	{XA_Week4B, XA_LENGTH(15100)}, //XA_MILF
 	{XA_Week4B, XA_LENGTH(8900)}, //XA_Test
 	//WEEK5A.XA
-	{XA_Week5A, XA_LENGTH(11520)}, //XA_Cocoa
-	{XA_Week5A, XA_LENGTH(9401)},  //XA_Eggnog
+	{XA_Week5A, XA_LENGTH(23900)}, //XA_Cocoa
+	{XA_Week5A, XA_LENGTH(14100)},  //XA_Eggnog
 	//WEEK5B.XA
 	{XA_Week5B, XA_LENGTH(12000)}, //XA_WinterHorrorland
 	//CUT.XA

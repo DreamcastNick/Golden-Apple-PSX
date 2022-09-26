@@ -32,7 +32,7 @@ IO_Data Archive_Find(IO_Data arc, const char *path)
 typedef struct
 {
 	char path[12];
-	u32 pos;
+	int pos;
 } ArchiveFile;
 
 //Archive functions

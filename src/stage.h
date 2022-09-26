@@ -185,9 +185,9 @@ typedef struct
 {
 	//Stage settings
 	boolean ghost, cutscene, downscroll, middlescroll, expsync;
-	s32 mode;
+	int mode;
 	
-	u32 offset;
+	int offset;
 	
 	//HUD textures
 	Gfx_Tex tex_hud0, tex_dialog, tex_hud1;
@@ -208,7 +208,7 @@ typedef struct
 	
 	//Stage state
 	boolean story;
-	u8 flag;
+	int flag;
 	StageTrans trans;
 	s32 animcounter;
 	

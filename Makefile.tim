@@ -40,6 +40,7 @@ all: \
 	iso/rpa/main.arc \
 	iso/rpb/main.arc \
 	iso/rpc/main.arc \
+	iso/sart/main.arc \
 	iso/gf/main.arc \
 	iso/gf/tut.arc \
 	iso/gf/best.arc \
@@ -140,9 +141,11 @@ iso/rpb/main.arc: iso/rpb/idle0.tim iso/rpb/idle1.tim iso/rpb/idle2.tim iso/rpb/
 # RECOVERED_PROJECT 03
 iso/rpc/main.arc: iso/rpc/idle0.tim iso/rpc/left0.tim iso/rpc/left1.tim iso/rpc/left2.tim iso/rpc/down0.tim iso/rpc/down1.tim iso/rpc/down2.tim iso/rpc/up0.tim iso/rpc/up1.tim iso/rpc/up2.tim iso/rpc/right0.tim iso/rpc/right1.tim iso/rpc/right2.tim
 
+# Sart Producer
+iso/sart/main.arc: iso/sart/idle0.tim iso/sart/idle1.tim iso/sart/idle2.tim iso/sart/idle3.tim iso/sart/idle4.tim iso/sart/left0.tim iso/sart/left1.tim iso/sart/left2.tim iso/sart/left3.tim iso/sart/down0.tim iso/sart/down1.tim iso/sart/down2.tim iso/sart/down3.tim iso/sart/up0.tim iso/sart/up1.tim iso/sart/up2.tim iso/sart/up3.tim iso/sart/right0.tim iso/sart/right1.tim iso/sart/right2.tim iso/sart/right3.tim
+
 # GF
 iso/gf/main.arc: iso/gf/gf0.tim iso/gf/gf1.tim iso/gf/gf2.tim
-iso/gf/tut.arc: iso/gf/tut0.tim iso/gf/tut1.tim
 iso/gf/best.arc: iso/gf/bestgf0.tim
 
 # Week 0
@@ -168,4 +171,4 @@ iso/week5/back.arc: iso/week5/back0.tim iso/week5/back1.tim iso/week5/back2.tim
 iso/week8/back.arc: iso/week8/back0.tim iso/week8/back1.tim iso/week8/back2.tim
 
 # Week 9
-iso/week9/back.arc: iso/week9/back0.tim
+iso/week9/back.arc: iso/week9/back0.tim iso/week9/back1.tim

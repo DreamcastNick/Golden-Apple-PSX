@@ -241,9 +241,16 @@
 				<!-- Bambi assets -->
 				<file name = "bambi.arc" type = "data" source = "iso/bambi/main.arc"/>
 				
+				<!-- Sart Producer assets -->
+				<file name = "sart.arc" type = "data" source = "iso/sart/main.arc"/>
+				
+				<!-- RECOVERED_PROJECT assets -->
+				<file name = "rpa.arc" type = "data" source = "iso/rpa/main.arc"/>
+				<file name = "rpb.arc" type = "data" source = "iso/rpb/main.arc"/>
+				<file name = "rpc.arc" type = "data" source = "iso/rpc/main.arc"/>
+				
 				<!-- Girlfriend assets -->
 				<file name = "gf.arc" type = "data" source = "iso/gf/main.arc"/>
-				<file name = "gftut.arc" type = "data" source = "iso/gf/tut.arc"/>
 				<file name = "best.arc" type = "data" source = "iso/gf/best.arc"/>
 				<file name = "speaker.tim" type = "data" source = "iso/gf/speaker.tim"/>
 			</dir>
