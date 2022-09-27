@@ -416,6 +416,32 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			u8 hit_type = Stage_HitNote(this, type, stage.note_scroll - note_fp);
 			this->arrow_hitan[type & 0x3] = stage.step_time;
 			
+			#ifdef PSXF_NETWORK
+				if (stage.mode >= StageMode_Net1)
+				{
+					//Send note hit packet
+					Packet note_hit;
+					note_hit[0] = PacketType_NoteHit;
+					
+					u16 note_i = note - stage.notes;
+					note_hit[1] = note_i >> 0;
+					note_hit[2] = note_i >> 8;
+					
+					note_hit[3] = this->score >> 0;
+					note_hit[4] = this->score >> 8;
+					note_hit[5] = this->score >> 16;
+					note_hit[6] = this->score >> 24;
+					
+					note_hit[7] = hit_type;
+					
+					note_hit[8] = this->combo >> 0;
+					note_hit[9] = this->combo >> 8;
+					
+					Network_Send(&note_hit);
+				}
+			#else
+				(void)hit_type;
+			#endif
 			(void)hit_type;
 			return;
 		}
@@ -935,12 +961,53 @@ static void Stage_DrawNotes(void)
 			{
 				if (stage.mode < StageMode_Net1 || i == ((stage.mode == StageMode_Net1) ? 0 : 1))
 				{
+					//Missed note
+					Stage_CutVocal();
+					Stage_MissNote(this);
+					this->health -= 475;
+
+					//Send miss packet
+					#ifdef PSXF_NETWORK
+						if (stage.mode >= StageMode_Net1)
+						{
+							//Send note hit packet
+							Packet note_hit;
+							note_hit[0] = PacketType_NoteMiss;
+							note_hit[1] = 0xFF;
+
+							note_hit[2] = this->score >> 0;
+							note_hit[3] = this->score >> 8;
+							note_hit[4] = this->score >> 16;
+							note_hit[5] = this->score >> 24;
+
+							Network_Send(&note_hit);
+						}
+					#endif
+					
 					if ((((stage.mode == StageMode_Swap) || (stage.mode == StageMode_2P))))
 					{
 						//Missed note
 						Stage_CutVocal();
 						Stage_MissNote(this);
 						this->health -= 475;
+						
+						//Send miss packet
+						#ifdef PSXF_NETWORK
+						if (stage.mode >= StageMode_Net1)
+						{
+							//Send note hit packet
+							Packet note_hit;
+							note_hit[0] = PacketType_NoteMiss;
+							note_hit[1] = 0xFF;
+
+							note_hit[2] = this->score >> 0;
+							note_hit[3] = this->score >> 8;
+							note_hit[4] = this->score >> 16;
+							note_hit[5] = this->score >> 24;
+
+							Network_Send(&note_hit);
+						}
+						#endif
 					}
 				}
 			}
